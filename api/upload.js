@@ -1,5 +1,4 @@
-import { google } from 'googleapis';
-import { Readable } from 'stream';
+import { v2 as cloudinary } from 'cloudinary';
 import formidable from 'formidable';
 import fs from 'fs';
 
@@ -10,62 +9,46 @@ export const config = {
     },
 };
 
-// Initialize Google Drive
-const initializeGoogleDrive = () => {
+// Initialize Cloudinary
+const initializeCloudinary = () => {
     try {
-        if (!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY) {
-            return null;
+        if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+            return false;
         }
 
-        const auth = new google.auth.GoogleAuth({
-            credentials: {
-                client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-                private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-            },
-            scopes: ['https://www.googleapis.com/auth/drive.file'],
+        cloudinary.config({
+            cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+            api_key: process.env.CLOUDINARY_API_KEY,
+            api_secret: process.env.CLOUDINARY_API_SECRET
         });
 
-        return google.drive({ version: 'v3', auth });
+        return true;
     } catch (error) {
-        console.error('Failed to initialize Google Drive:', error.message);
-        return null;
+        console.error('Failed to initialize Cloudinary:', error.message);
+        return false;
     }
 };
 
-// Upload to Google Drive
-const uploadToGoogleDrive = async (drive, fileBuffer, fileName, mimeType) => {
-    const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
+// Upload to Cloudinary
+const uploadToCloudinary = async (fileBuffer, fileName, category) => {
+    return new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream(
+            {
+                folder: `ayush-enterprise/${category}`,
+                public_id: fileName.replace(/\.[^/.]+$/, ''),
+                resource_type: 'auto',
+            },
+            (error, result) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(result.secure_url);
+                }
+            }
+        );
 
-    const bufferStream = new Readable();
-    bufferStream.push(fileBuffer);
-    bufferStream.push(null);
-
-    const fileMetadata = {
-        name: fileName,
-        parents: folderId ? [folderId] : [],
-    };
-
-    const media = {
-        mimeType: mimeType,
-        body: bufferStream,
-    };
-
-    const response = await drive.files.create({
-        requestBody: fileMetadata,
-        media: media,
-        fields: 'id, name',
+        uploadStream.end(fileBuffer);
     });
-
-    // Make file publicly accessible
-    await drive.permissions.create({
-        fileId: response.data.id,
-        requestBody: {
-            role: 'reader',
-            type: 'anyone',
-        },
-    });
-
-    return `https://drive.google.com/uc?id=${response.data.id}&export=download`;
 };
 
 export default async function handler(req, res) {
@@ -111,16 +94,18 @@ export default async function handler(req, res) {
         // Read file buffer
         const fileBuffer = fs.readFileSync(file.filepath);
 
-        // Try Google Drive upload
-        const drive = initializeGoogleDrive();
+        // Get category
+        const category = fields.category?.[0] || 'products';
 
-        if (drive) {
+        // Try Cloudinary upload
+        const cloudinaryConfigured = initializeCloudinary();
+
+        if (cloudinaryConfigured) {
             try {
-                const publicUrl = await uploadToGoogleDrive(
-                    drive,
+                const publicUrl = await uploadToCloudinary(
                     fileBuffer,
                     fileName,
-                    file.mimetype || 'application/octet-stream'
+                    category
                 );
 
                 return res.status(200).json({
@@ -128,15 +113,15 @@ export default async function handler(req, res) {
                     path: publicUrl,
                     filename: fileName,
                 });
-            } catch (driveError) {
-                console.error('Google Drive upload failed:', driveError.message);
+            } catch (cloudinaryError) {
+                console.error('Cloudinary upload failed:', cloudinaryError.message);
                 return res.status(500).json({
-                    error: 'Google Drive upload failed. Please configure credentials.'
+                    error: 'Cloudinary upload failed: ' + cloudinaryError.message
                 });
             }
         } else {
             return res.status(500).json({
-                error: 'Google Drive not configured. Please add environment variables.'
+                error: 'Cloudinary not configured. Please add environment variables to Vercel.'
             });
         }
     } catch (error) {
