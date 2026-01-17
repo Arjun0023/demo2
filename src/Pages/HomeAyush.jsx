@@ -1,6 +1,6 @@
 import HeroAyush from "../components/hero/HeroAyush";
 import AboutAyush from "../components/about/AboutAyush";
-import ProductsCatalog from "../components/products/ProductsCatalog";
+import FeaturedCategories from "../components/home/FeaturedCategories";
 import GoogleMapsSection from "../components/map/GoogleMapsSection";
 import ContactForm from "../components/contact-page/ContactForm";
 import CallToAction from "../components/call-to-action/CallToAction";
@@ -11,9 +11,9 @@ function HomeAyush() {
   return (
     <main>
       <HeroAyush />
-      <AboutAyush />
-      <ProductsCatalog />
+      <FeaturedCategories />
       <CallToAction />
+      <AboutAyush />
       <Testimonials />
       <GoogleMapsSection />
       <ContactForm />

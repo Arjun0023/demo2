@@ -1,0 +1,279 @@
+[
+  {
+    "id": "turf",
+    "name": "Turf",
+    "tags": [
+      "sports",
+      "outdoor"
+    ],
+    "image": "/assets/images/turf-main.jpg",
+    "subcategories": [],
+    "products": [
+      {
+        "id": "turf-1",
+        "name": "FIFA Pro Grade Turf",
+        "price": "Contact for Price",
+        "description": "Professional grade football turf.",
+        "image": "/assets/images/turf-pro.jpg",
+        "photos": [],
+        "videos": []
+      },
+      {
+        "id": "turf-2",
+        "name": "Training Turf",
+        "price": "Contact for Price",
+        "description": "Durable turf for training grounds.",
+        "image": "/assets/images/turf-training.jpg",
+        "photos": [],
+        "videos": []
+      }
+    ]
+  },
+  {
+    "id": "badminton",
+    "name": "Badminton Court",
+    "tags": [
+      "sports",
+      "indoor"
+    ],
+    "image": "/assets/images/badminton-main.jpg",
+    "subcategories": [],
+    "products": [
+      {
+        "id": "bad-1",
+        "name": "BWF Standard Mat",
+        "price": "Contact for Price",
+        "description": "Professional synthetic court mat.",
+        "image": "/assets/images/badminton-mat.jpg",
+        "photos": [],
+        "videos": []
+      }
+    ]
+  },
+  {
+    "id": "pickleball",
+    "name": "Pickle Ball Court",
+    "tags": [
+      "sports",
+      "outdoor"
+    ],
+    "image": "/assets/images/pickleball-upload.png",
+    "subcategories": [],
+    "products": [
+      {
+        "id": "pb-1",
+        "name": "Acrylic Hard Court",
+        "price": "Contact for Price",
+        "description": "All-weather acrylic surface.",
+        "image": "/assets/images/pickleball-product.jpg",
+        "photos": [],
+        "videos": []
+      }
+    ]
+  },
+  {
+    "id": "track",
+    "name": "Static Track",
+    "tags": [
+      "sports",
+      "outdoor"
+    ],
+    "image": "/assets/images/track-main.jpg",
+    "subcategories": [],
+    "products": [
+      {
+        "id": "run-1",
+        "name": "EPDM Running Track",
+        "price": "Contact for Price",
+        "description": "Shock absorbing running surface.",
+        "image": "/assets/images/track-product.jpg",
+        "photos": [],
+        "videos": []
+      }
+    ]
+  },
+  {
+    "id": "gym",
+    "name": "Gym Equipment",
+    "tags": [
+      "sports",
+      "outdoor"
+    ],
+    "image": "/assets/images/gym-floor.png",
+    "subcategories": [],
+    "products": [
+      {
+        "id": "gym-1",
+        "name": "Gym Equipment",
+        "price": "Contact for Price",
+        "description": "All-weather gym equipment.",
+        "image": "/assets/images/gym-floor.png",
+        "photos": [],
+        "videos": []
+      }
+    ]
+  },
+  {
+    "id": "zumba",
+    "name": "Zumba Hall Flooring",
+    "tags": [
+      "flooring",
+      "indoor"
+    ],
+    "image": "/assets/images/zumba-main.jpg",
+    "subcategories": [],
+    "products": [
+      {
+        "id": "zum-1",
+        "name": "Wooden Sprung Floor",
+        "price": "Contact for Price",
+        "description": "Ideal for dance and aerobics.",
+        "image": "/assets/images/zumba-product.jpg",
+        "photos": [],
+        "videos": []
+      }
+    ]
+  },
+  {
+    "id": "carpets",
+    "name": "Carpets",
+    "tags": [
+      "flooring",
+      "indoor",
+      "decor"
+    ],
+    "image": "/assets/images/carpets-main.jpg",
+    "subcategories": [],
+    "products": [
+      {
+        "id": "carp-1",
+        "name": "Luxury Carpet",
+        "price": "Contact for Price",
+        "description": "High traffic durability.",
+        "image": "/assets/images/carpets-product.jpg",
+        "photos": [],
+        "videos": []
+      }
+    ]
+  },
+  {
+    "id": "office",
+    "name": "Office Flooring",
+    "tags": [
+      "flooring",
+      "indoor",
+      "office"
+    ],
+    "image": "/assets/images/office-flooring.jpg",
+    "subcategories": [],
+    "products": [
+      {
+        "id": "off-1",
+        "name": "Modular Office Tiles",
+        "price": "Contact for Price",
+        "description": "Easy to install and maintain.",
+        "image": "/assets/images/office-flooring.jpg",
+        "photos": [],
+        "videos": []
+      }
+    ]
+  },
+  {
+    "id": "interior",
+    "name": "Interior Design",
+    "tags": [
+      "decor",
+      "indoor"
+    ],
+    "image": "/assets/images/interior-design.jpg",
+    "subcategories": [],
+    "products": []
+  },
+  {
+    "id": "wallpapers",
+    "name": "Wall Papers",
+    "tags": [
+      "decor",
+      "indoor"
+    ],
+    "image": "/assets/images/wallpaper.jpg",
+    "subcategories": [],
+    "products": []
+  },
+  {
+    "id": "foster",
+    "name": "Foster Filming",
+    "tags": [
+      "decor",
+      "privacy"
+    ],
+    "image": "/assets/images/foster-film.jpg",
+    "subcategories": [],
+    "products": []
+  },
+  {
+    "id": "vertical",
+    "name": "Vertical Garden",
+    "tags": [
+      "decor",
+      "outdoor",
+      "indoor"
+    ],
+    "image": "https://res.cloudinary.com/deyymd1fe/image/upload/v1768668899/ayush-enterprise/categories/image8-1768668895745-zq5dbn.png",
+    "subcategories": [],
+    "products": [
+      {
+        "id": "vert-1",
+        "name": "Artificial Green Wall",
+        "price": "Contact for Price",
+        "description": "Lush green look for walls.",
+        "image": "/assets/images/vertical-garden.jpg",
+        "photos": [],
+        "videos": []
+      }
+    ]
+  },
+  {
+    "id": "pots",
+    "name": "Artificial Flower Pot",
+    "tags": [
+      "decor"
+    ],
+    "image": "/assets/images/flower-pot.jpg",
+    "subcategories": [],
+    "products": []
+  },
+  {
+    "id": "epdm",
+    "name": "EPDM Flooring",
+    "tags": [
+      "flooring",
+      "outdoor"
+    ],
+    "image": "/assets/images/epdm.jpg",
+    "subcategories": [],
+    "products": [
+      {
+        "id": "epdm-1",
+        "name": "EPDM Safety Surface",
+        "price": "Contact for Price",
+        "description": "Ideal for playgrounds and tracks.",
+        "image": "/assets/uploads/products/image7-1768667859588-1qv13j.png",
+        "photos": [],
+        "videos": []
+      },
+      {
+        "id": "1768667913819",
+        "name": "New Product",
+        "price": "1000",
+        "description": "asd",
+        "image": "/assets/uploads/products/image5-1768668014405-4yyepm.png",
+        "subCategoryId": "",
+        "photos": [
+          "https://res.cloudinary.com/deyymd1fe/image/upload/v1768668705/ayush-enterprise/products/image6-1768668701659-pbdnp3.png"
+        ],
+        "videos": []
+      }
+    ]
+  }
+]

@@ -7,16 +7,16 @@ function CallToAction() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-red/90 z-10"></div>
-        <img 
-          src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1920&h=600&fit=crop" 
-          alt="CTA Background" 
+        <img
+          src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?q=80&w=2070&auto=format&fit=crop"
+          alt="CTA Background"
           className="w-full h-full object-cover"
         />
       </div>
-      
+
       <div className="relative z-20 grid items-center gap-10 px-6 py-12 2xl:grid-cols-[0.8fr,200px]">
         <TertiaryHeading color="white">
-          Ready to upgrade your fitness facility with premium equipment?
+          Ready to build your dream football turf or sports facility?
         </TertiaryHeading>
 
         <div>
