@@ -26,6 +26,16 @@
         "image": "/assets/images/turf-training.jpg",
         "photos": [],
         "videos": []
+      },
+      {
+        "id": "1768671743181",
+        "name": "football",
+        "price": "132",
+        "description": "asd",
+        "image": "https://res.cloudinary.com/deyymd1fe/image/upload/v1768671742/ayush-enterprise/products/hero-bg-1768671738183-0gvlg0.png",
+        "subCategoryId": "",
+        "photos": [],
+        "videos": []
       }
     ]
   },

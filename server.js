@@ -1,5 +1,6 @@
 import express from 'express';
 import multer from 'multer';
+import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
@@ -16,6 +17,7 @@ const PORT = 3001;
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 app.use(express.static('public'));
 
 // Cloudinary Setup
@@ -146,6 +148,24 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
         });
     } catch (error) {
         console.error('Upload error:', error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// GET catalog endpoint
+app.get('/api/catalog', (req, res) => {
+    try {
+        const catalogPath = path.join(__dirname, 'public', 'data', 'catalog.json');
+
+        if (fs.existsSync(catalogPath)) {
+            const catalogData = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+            res.json(catalogData);
+        } else {
+            // Return empty array if file doesn't exist
+            res.json([]);
+        }
+    } catch (error) {
+        console.error('Load catalog error:', error);
         res.status(500).json({ error: error.message });
     }
 });

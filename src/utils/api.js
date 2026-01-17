@@ -9,14 +9,20 @@ const MAX_VIDEO_SIZE = 5 * 1024 * 1024; // 5MB in bytes
  */
 export const loadCatalog = async () => {
     try {
-        const response = await fetch('/data/catalog.json');
+        const response = await fetch('http://localhost:3001/api/catalog');
         if (!response.ok) {
             throw new Error('Failed to load catalog');
         }
         return await response.json();
     } catch (error) {
         console.error('Error loading catalog:', error);
-        return [];
+        // Fallback to static file if API fails
+        try {
+            const fallbackResponse = await fetch('/data/catalog.json');
+            return await fallbackResponse.json();
+        } catch (fallbackError) {
+            return [];
+        }
     }
 };
 
@@ -26,7 +32,7 @@ export const loadCatalog = async () => {
  */
 export const saveCatalog = async (catalogData) => {
     try {
-        const response = await fetch('/api/save-catalog', {
+        const response = await fetch('http://localhost:3001/api/save-catalog', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -73,7 +79,7 @@ export const uploadFile = async (file, category = 'products') => {
     formData.append('category', category);
 
     try {
-        const response = await fetch('/api/upload', {
+        const response = await fetch('http://localhost:3001/api/upload', {
             method: 'POST',
             body: formData,
         });
