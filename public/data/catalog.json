@@ -201,17 +201,6 @@
     "products": []
   },
   {
-    "id": "foster",
-    "name": "Foster Filming",
-    "tags": [
-      "decor",
-      "privacy"
-    ],
-    "image": "/assets/images/foster-film.jpg",
-    "subcategories": [],
-    "products": []
-  },
-  {
     "id": "vertical",
     "name": "Vertical Garden",
     "tags": [
@@ -250,7 +239,7 @@
       "flooring",
       "outdoor"
     ],
-    "image": "/assets/images/epdm.jpg",
+    "image": "https://res.cloudinary.com/deyymd1fe/image/upload/v1768669005/ayush-enterprise/categories/image-1768669002408-bw1oif.png",
     "subcategories": [],
     "products": [
       {
