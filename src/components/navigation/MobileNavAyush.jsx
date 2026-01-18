@@ -1,7 +1,7 @@
 import Logo from "../logo/Logo";
 import NavLinksAyush from "./NavLinksAyush";
 import CloseButton from "./CloseButton";
-import { FaPhone, FaWhatsapp } from "react-icons/fa";
+import { FaDirections, FaPhone, FaWhatsapp } from "react-icons/fa";
 
 function MobileNavAyush({ isNavOpen, onToggleNav }) {
   const handleWhatsAppClick = () => {
@@ -17,10 +17,7 @@ function MobileNavAyush({ isNavOpen, onToggleNav }) {
         isNavOpen ? "left-0" : "left-[-100%]"
       }`}
     >
-      <CloseButton
-        onToggleNav={onToggleNav}
-        styles="top-8 right-8 3xl:hidden"
-      />
+      <CloseButton onClick={onToggleNav} />
 
       <Logo />
 
@@ -31,6 +28,15 @@ function MobileNavAyush({ isNavOpen, onToggleNav }) {
       
       {/* Contact Buttons */}
       <div className="flex flex-col gap-4 mt-6">
+        <a
+          href="https://share.google/vkzLx1uui7kpivrtQ"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 text-white hover:text-red transition-colors"
+        >
+          <FaDirections className="w-5 h-5" />
+          Get Directions
+        </a>
         <a
           href="tel:+918446915179"
           className="flex items-center gap-3 text-white hover:text-red transition-colors"

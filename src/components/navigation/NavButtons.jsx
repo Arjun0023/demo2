@@ -12,6 +12,15 @@ function NavButtons({ onToggleNav, onToggleSidebar }) {
       <button className={btnStyles}>
         <FaChartBar className="h-6 w-6" onClick={onToggleSidebar} />
       </button>
+      <a
+        href="https://share.google/vkzLx1uui7kpivrtQ"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="focus lg:hidden text-white transition-colors duration-300 hover:text-red"
+        aria-label="Get Directions"
+      >
+        <FaDirections className="h-6 w-6 rounded-sm bg-red p-1.5 text-white transition-transform duration-300 hover:scale-110" />
+      </a>
       <div className="focus hidden rounded-sm border-2 border-solid border-gray-350 p-1.5 lg:block">
         <a
           href="https://share.google/vkzLx1uui7kpivrtQ"
