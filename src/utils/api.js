@@ -9,7 +9,7 @@ const MAX_VIDEO_SIZE = 5 * 1024 * 1024; // 5MB in bytes
  */
 export const loadCatalog = async () => {
     try {
-        const response = await fetch('/api/catalog');
+        const response = await fetch(`/api/catalog?t=${Date.now()}`);
         if (!response.ok) {
             throw new Error('Failed to load catalog');
         }

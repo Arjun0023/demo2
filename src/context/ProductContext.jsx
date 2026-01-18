@@ -10,6 +10,8 @@ export const ProductProvider = ({ children }) => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
+    const [isSaving, setIsSaving] = useState(false);
+
     // Load catalog from JSON file on mount
     useEffect(() => {
         const initCatalog = async () => {
@@ -28,11 +30,14 @@ export const ProductProvider = ({ children }) => {
     // Save catalog to JSON file whenever it changes (debounced)
     useEffect(() => {
         if (!isLoading && catalog.length > 0) {
+            setIsSaving(true);
             const timeoutId = setTimeout(async () => {
                 try {
                     await saveCatalog(catalog);
                 } catch (error) {
                     console.error('Failed to save catalog:', error);
+                } finally {
+                    setIsSaving(false);
                 }
             }, 500); // Debounce saves by 500ms
 
@@ -121,6 +126,7 @@ export const ProductProvider = ({ children }) => {
             catalog,
             isAdmin,
             isLoading,
+            isSaving,
             loginAdmin,
             logoutAdmin,
             addCategory,

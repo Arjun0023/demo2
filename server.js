@@ -156,6 +156,7 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 
 // GET catalog endpoint
 app.get('/api/catalog', async (req, res) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     try {
         if (cloudinaryConfigured) {
             // Generate URL for the raw file
