@@ -34,10 +34,10 @@ function Info() {
         <div>
           <h4 className={headingStyles}>Information</h4>
           <a
-            href="tel:+919876543210"
+            href="tel:+918446915179"
             className="block font-medium text-gray-300"
           >
-            +91-98765-43210
+            +91 8446915179
           </a>
           <a
             href="mailto:info@ayushenterprise.com"

@@ -77,11 +77,11 @@ function FeaturedCategories() {
                             </div>
                             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 pt-12">
                                 <span className="text-xs font-bold text-red-500 uppercase tracking-widest mb-1 block">
-                                    {cat.tags ? cat.tags[0] : 'Product'}
+                                    {/* {cat.tags ? cat.tags[0] : 'Product'} */}
                                 </span>
                                 <h3 className="text-xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">{cat.name}</h3>
                                 <span className="text-white/80 text-sm group-hover:translate-x-2 transition-transform inline-flex items-center gap-2">
-                                    View Collection →
+                                    View Products →
                                 </span>
                             </div>
                         </Link>

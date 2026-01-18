@@ -4,22 +4,69 @@
 
 const MAX_VIDEO_SIZE = 5 * 1024 * 1024; // 5MB in bytes
 
+const LOCAL_CATALOG_KEY = "catalog_data_v1";
+const LOCAL_CATALOG_PENDING_KEY = "catalog_pending_sync_v1";
+
+const readLocalCatalog = () => {
+    try {
+        const raw = localStorage.getItem(LOCAL_CATALOG_KEY);
+        return raw ? JSON.parse(raw) : null;
+    } catch (error) {
+        return null;
+    }
+};
+
+const writeLocalCatalog = (catalogData, pending) => {
+    try {
+        localStorage.setItem(LOCAL_CATALOG_KEY, JSON.stringify(catalogData));
+        if (pending) {
+            localStorage.setItem(LOCAL_CATALOG_PENDING_KEY, "true");
+        } else {
+            localStorage.removeItem(LOCAL_CATALOG_PENDING_KEY);
+        }
+    } catch (error) {
+        // Ignore localStorage failures (private mode, quota, etc.)
+    }
+};
+
+const hasPendingCatalogSync = () => {
+    try {
+        return localStorage.getItem(LOCAL_CATALOG_PENDING_KEY) === "true";
+    } catch (error) {
+        return false;
+    }
+};
+
 /**
  * Load catalog data from JSON file
  */
 export const loadCatalog = async () => {
     try {
+        const localCatalog = readLocalCatalog();
+        if (localCatalog) {
+            return localCatalog;
+        }
+
         const response = await fetch(`/api/catalog?t=${Date.now()}`);
         if (!response.ok) {
             throw new Error('Failed to load catalog');
         }
-        return await response.json();
+        const data = await response.json();
+        writeLocalCatalog(data, false);
+        return data;
     } catch (error) {
         console.error('Error loading catalog:', error);
-        // Fallback to static file if API fails
+        // Fallback to local storage or static file if API fails
+        const localCatalog = readLocalCatalog();
+        if (localCatalog) {
+            return localCatalog;
+        }
+
         try {
             const fallbackResponse = await fetch('/data/catalog.json');
-            return await fallbackResponse.json();
+            const data = await fallbackResponse.json();
+            writeLocalCatalog(data, false);
+            return data;
         } catch (fallbackError) {
             return [];
         }
@@ -44,10 +91,13 @@ export const saveCatalog = async (catalogData) => {
             throw new Error('Failed to save catalog');
         }
 
-        return await response.json();
+        const data = await response.json();
+        writeLocalCatalog(catalogData, false);
+        return data;
     } catch (error) {
-        console.error('Error saving catalog:', error);
-        throw error;
+        console.warn('Error saving catalog, storing locally:', error);
+        writeLocalCatalog(catalogData, true);
+        return { success: false, local: true, error: error.message };
     }
 };
 

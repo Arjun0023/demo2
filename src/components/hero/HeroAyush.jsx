@@ -10,7 +10,7 @@ function HeroAyush() {
   const navigate = useNavigate();
   const handleWhatsAppClick = () => {
     window.open(
-      "https://wa.me/919876543210?text=Hi%2C%20I%27m%20interested%20in%20your%20turf%20flooring%20solutions.",
+      "https://wa.me/918446915179?text=Hi%2C%20I%27m%20interested%20in%20your%20turf%20flooring%20solutions.",
       "_blank"
     );
   };
@@ -62,15 +62,22 @@ function HeroAyush() {
               <div className="inline-block">
                 <div className="bg-red px-6 py-2 sm:px-8 sm:py-3">
                   <span className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">
-                    PREMIER SPORTS FACILITY
+                    Premuim Sports Flooring Solutions
                   </span>
                 </div>
               </div>
 
-              <PrimaryHeading
-                title="AYUSH SPORTS"
-                subtitle="World-Class Football Courts, Turfs & Gym Flooring"
-              />
+              <div className="space-y-3">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                  Ayush Sports
+                </h1>
+                <p className="text-3xl sm:text-4xl lg:text-6xl font-semibold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                  Design Your Sports Arena
+                </p>
+                <p className="text-lg sm:text-xl lg:text-3xl font-semibold text-white/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                  World-Class Football Courts, Turfs & Gym Flooring
+                </p>
+              </div>
 
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center xl:justify-start pt-4">
                 <button
@@ -82,9 +89,9 @@ function HeroAyush() {
 
                 <button
                   onClick={handleWhatsAppClick}
-                  className="focus relative inline-flex items-center justify-center gap-2 bg-green-600 px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase text-white shadow-lg before:absolute before:left-3 before:top-[-12px] before:z-[-1] before:h-full before:w-full before:border-2 before:border-solid before:transition-all before:duration-500 hover:before:translate-x-[-12px] hover:before:translate-y-[12px] before:border-green-400/50"
+                  className="focus relative inline-flex items-center justify-center gap-2 bg-green-600 px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-bold uppercase text-white shadow-lg before:absolute before:left-3 before:top-[-12px] before:z-[-1] before:h-full before:w-full before:border-2 before:border-solid before:transition-all before:duration-500 before:translate-x-[-12px] before:translate-y-[12px] hover:before:translate-x-0 hover:before:translate-y-0 before:border-green-400/50"
                 >
-                  <FaWhatsapp className="h-auto w-4" />
+                  <FaWhatsapp className="h-auto w-4 !text-green-200" />
                   Chat on WhatsApp
                 </button>
               </div>

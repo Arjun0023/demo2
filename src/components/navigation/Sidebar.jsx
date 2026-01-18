@@ -11,12 +11,18 @@ import {
 import CloseButton from "./CloseButton";
 import Logo from "../logo/Logo";
 
-import img1 from "../../images/sidebar/1.webp";
-import img2 from "../../images/sidebar/2.webp";
-import img3 from "../../images/sidebar/3.webp";
-import img4 from "../../images/sidebar/4.webp";
-import img5 from "../../images/sidebar/5.webp";
-import img6 from "../../images/sidebar/6.webp";
+import heroBg from "../../assets/hero/hero-bg.png";
+import heroImg from "../../assets/hero/image.png";
+import heroImg1 from "../../assets/hero/image1.png";
+import heroImg2 from "../../assets/hero/image2.png";
+import heroImg3 from "../../assets/hero/image3.png";
+import heroImg4 from "../../assets/hero/image4.png";
+import heroImg5 from "../../assets/hero/image5.png";
+import heroImg6 from "../../assets/hero/image6.png";
+import heroImg7 from "../../assets/hero/image7.png";
+import heroImg8 from "../../assets/hero/image8.png";
+import heroImg9 from "../../assets/hero/image9.png";
+import heroImg10 from "../../assets/hero/image10.png";
 
 function Sidebar({ isSidebarOpen, handleToggleSidebar }) {
   return (
@@ -32,45 +38,43 @@ function Sidebar({ isSidebarOpen, handleToggleSidebar }) {
       <section className="space-y-4">
         <h2 className="text-xl font-bold">About Us</h2>
         <p className="font-medium text-gray-400">
-          Find out who we are and what makes us unique. We are a
-          community-driven gym committed to providing personalized fitness
-          experiences for all levels of fitness enthusiasts in a welcoming and
-          supportive environment.
+          Ayush enterprise (Ayush sports) is a premier sports facility
+          specialising in world-class football courts and turfs, designed to
+          provide athletes and sports enthusiasts with an exceptional playing
+          experience. Our state-of-the-art facilities feature high-quality
+          artificial and natural turfs that cater to all levels of play, from
+          casual games to competitive leagues. Whether you&apos;re looking for a
+          space to train, host a tournament, or enjoy a friendly match, we offer
+          flexible rental options, professional-grade equipment, and a vibrant
+          community atmosphere. Our commitment to quality, safety, and customer
+          satisfaction makes us the go-to destination for artificial turfs,
+          football court, gym equipment and many more gymming products.
         </p>
       </section>
       <section className="space-y-4">
         <h2 className="text-xl font-bold">Gallery</h2>
         <div className="grid grid-cols-3 gap-2.5 3xl:gap-4">
-          <img
-            src={img1}
-            alt=""
-            className="h-full w-full cursor-pointer rounded-lg"
-          />
-          <img
-            src={img2}
-            alt=""
-            className="h-full w-full cursor-pointer rounded-lg"
-          />
-          <img
-            src={img3}
-            alt=""
-            className="h-full w-full cursor-pointer rounded-lg"
-          />
-          <img
-            src={img4}
-            alt=""
-            className="h-full w-full cursor-pointer rounded-lg"
-          />
-          <img
-            src={img5}
-            alt=""
-            className="h-full w-full cursor-pointer rounded-lg"
-          />
-          <img
-            src={img6}
-            alt=""
-            className="h-full w-full cursor-pointer rounded-lg"
-          />
+          {[
+            heroBg,
+            heroImg,
+            heroImg1,
+            heroImg2,
+            heroImg3,
+            heroImg4,
+            heroImg5,
+            heroImg6,
+            heroImg7,
+            heroImg8,
+            heroImg9,
+            heroImg10,
+          ].map((image, index) => (
+            <img
+              key={image}
+              src={image}
+              alt={`Gallery image ${index + 1}`}
+              className="h-full w-full cursor-pointer rounded-lg"
+            />
+          ))}
         </div>
       </section>
       <section className="space-y-4">
@@ -81,13 +85,14 @@ function Sidebar({ isSidebarOpen, handleToggleSidebar }) {
             className="focus flex items-center gap-2 font-medium text-gray-400 transition-colors duration-300 hover:text-red"
           >
             <FaLocationDot className="text-red" />
-            123, Fitness Avenue, Near Sports Complex, New Delhi
+            Shop No 1, Nakhate Complex, Vijay Nagar, Kalewadi,
+            Pimpri-Chinchwad, Pune, Maharashtra 411017
           </Link>
           <Link
-            to="tel:+919876543210"
+            to="tel:+918446915179"
             className="focus flex items-center gap-2 font-medium text-gray-400 transition-colors duration-300 hover:text-red"
           >
-            <FaPhone className="text-red" /> +91-98765-43210
+            <FaPhone className="text-red" /> +91 8446915179
           </Link>
           <Link
             to="mailto:info@ayushenterprise.com"

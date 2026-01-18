@@ -1,10 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  FaFacebookF,
-  FaXTwitter,
-  FaPinterestP,
-  FaYoutube,
-} from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
 
 const linkStyles = `focus rounded-full bg-gray-50 p-4 text-gray-400 hover:bg-red hover:text-white`;
 
@@ -15,13 +10,10 @@ function SocialLinks() {
         <FaFacebookF />
       </Link>
       <Link className={linkStyles}>
-        <FaXTwitter />
+        <FaInstagram />
       </Link>
       <Link className={linkStyles}>
-        <FaPinterestP />
-      </Link>
-      <Link className={linkStyles}>
-        <FaYoutube />
+        <FaWhatsapp />
       </Link>
     </ul>
   );

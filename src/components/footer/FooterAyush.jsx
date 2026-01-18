@@ -6,18 +6,21 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 function FooterAyush() {
   const quickLinks = [
     { name: "Home", path: "/" },
-    { name: "Products", path: "/#products" },
+    { name: "Products", path: "/shop" },
     { name: "About Us", path: "/about" },
     { name: "Contact", path: "/contact" },
+    { name: "Admin", path: "/admin" },
   ];
 
   const productCategories = [
-    "Dumbbells",
-    "Treadmills",
-    "Benches",
-    "Barbells",
-    "Resistance Bands",
-    "Accessories",
+    "Turf",
+    "Badminton Court",
+    "Pickle Ball Court",
+    "Static Track",
+    "Gym Flooring",
+    "Zumba Hall Flooring",
+    "Carpets",
+    "and More"
   ];
 
   return (
@@ -25,13 +28,17 @@ function FooterAyush() {
       <div className="container grid gap-8 sm:gap-12 md:grid-cols-2 lg:grid-cols-4">
         {/* Company Info */}
         <div className="space-y-6">
+          <p className="text-sm font-semibold uppercase tracking-widest text-gray-200">
+            Ayush Enterprises
+          </p>
           <Logo />
           <p className="text-gray-100">
             Premium gym equipment supplier serving fitness enthusiasts and commercial gyms since 2015.
           </p>
+          <p className="text-sm text-gray-200">GSTIN: ADD_GSTIN_HERE</p>
           <SocialLinks />
           <p className="text-sm text-gray-200">
-            © {new Date().getFullYear()} Ayush Enterprise. All rights reserved.
+            © {new Date().getFullYear()} Ayush Sports. All rights reserved.
           </p>
         </div>
 
@@ -58,12 +65,12 @@ function FooterAyush() {
           <ul className="space-y-3">
             {productCategories.map((category) => (
               <li key={category}>
-                <a
-                  href={`/#products`}
+                <Link
+                  to="/shop"
                   className="text-gray-100 hover:text-red transition-colors duration-300"
                 >
                   {category}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -74,11 +81,11 @@ function FooterAyush() {
           <h3 className="mb-6 text-xl font-bold">Contact Us</h3>
           <div className="space-y-4">
             <a
-              href="tel:+919876543210"
+              href="tel:+918446915179"
               className="flex items-center gap-3 text-gray-100 hover:text-red transition-colors"
             >
               <FaPhone className="text-red" />
-              +91-98765-43210
+              +91 8446915179
             </a>
             <a
               href="mailto:info@ayushenterprise.com"

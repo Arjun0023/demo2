@@ -1,4 +1,4 @@
-const slides = [
+export const slides = [
   {
     quote:
       "I've been purchasing equipment from Ayush Enterprise for the past 2 years and their quality is outstanding. The team is knowledgeable and supportive, the equipment is top-notch, and their after-sales service is excellent.",

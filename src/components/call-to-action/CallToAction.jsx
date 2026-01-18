@@ -21,7 +21,7 @@ function CallToAction() {
 
         <div>
           <PrimaryButton to="/contact" borderColor="white">
-            Get Quote Now
+            Contact Us Now
           </PrimaryButton>
         </div>
       </div>

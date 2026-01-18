@@ -7,7 +7,7 @@ function ContactForm() {
       <div className="container grid gap-10 2xl:grid-cols-2">
         <Info />
 
-        <Form />
+        <Form accessKey={import.meta.env.VITE_WEB3FORMS_ACCESS_KEY_HOME} />
       </div>
     </section>
   );

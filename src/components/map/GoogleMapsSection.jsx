@@ -6,7 +6,7 @@ function GoogleMapsSection() {
   const handleDirections = () => {
     // Replace with actual coordinates
     window.open(
-      "https://www.google.com/maps/dir/?api=1&destination=28.6139,77.2090&travelmode=driving",
+      "https://share.google/vkzLx1uui7kpivrtQ",
       "_blank"
     );
   };
@@ -31,7 +31,7 @@ function GoogleMapsSection() {
             {/* Map Container */}
             <div className="relative rounded-lg overflow-hidden shadow-xl h-[300px] sm:h-[400px] lg:h-[500px] order-2 lg:order-1">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0170739398707!2d77.20695831508289!3d28.613939182417534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM2JzUwLjIiTiA3N8KwMTInMzIuNCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.8817716547037!2d73.78984807558733!3d18.62438676599418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9004feeace5%3A0x972c53dbd955c655!2sAyush%20enterprise%20(%20Ayush%20sports)!5e0!3m2!1sen!2sin!4v1768725101178!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

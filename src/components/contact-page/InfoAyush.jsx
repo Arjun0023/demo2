@@ -10,9 +10,8 @@ function InfoAyush() {
         Get in Touch with Ayush Enterprise
       </h3>
       <p className="font-medium text-gray-300">
-        We&apos;re here to help you find the perfect gym equipment for your fitness journey. 
-        Whether you&apos;re setting up a home gym or commercial fitness center, our team of 
-        experts is ready to assist you with product selection, pricing, and support.
+
+      "Ayush enterprise (Ayush sports) is a premier sports facility specialising in world-class football courts and turfs, designed to provide athletes and sports enthusiasts with an exceptional playing experience. Our state-of-the-art facilities feature high-quality artificial and natural turfs that cater to all levels of play, from casual games to competitive leagues. Whether you’re looking for a space to train, host a tournament, or enjoy a friendly match, we offer flexible rental options, professional-grade equipment, and a vibrant community atmosphere. Our commitment to quality, safety, and customer satisfaction makes us the go-to destination for artificial turfs , football court, gym equipment and many more gymming products"
       </p>
       
       <div className="grid 2xl:grid-cols-2 2xl:gap-y-8">
@@ -21,13 +20,14 @@ function InfoAyush() {
           <address className="font-medium not-italic text-gray-300 flex items-start gap-3">
             <FaMapMarkerAlt className="text-red mt-1 flex-shrink-0" />
             <div>
-              123, Fitness Avenue,<br />
-              Near Sports Complex,<br />
-              New Delhi - 110001
+              Shop No 1, Nakhate Complex,<br />
+              Vijay Nagar, Kalewadi,<br />
+              Pimpri-Chinchwad, Pune,<br />
+              Maharashtra 411017
             </div>
           </address>
           <a
-            href="https://www.google.com/maps/dir/?api=1&destination=28.6139,77.2090&travelmode=driving"
+            href="https://share.google/vkzLx1uui7kpivrtQ"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-3 text-red font-semibold hover:underline"
@@ -52,11 +52,11 @@ function InfoAyush() {
         <div>
           <h4 className={headingStyles}>Contact Information</h4>
           <a
-            href="tel:+91-98765-43210"
+            href="tel:+918446915179"
             className="flex items-center gap-3 font-medium text-gray-300 hover:text-red transition-colors mb-2"
           >
             <FaPhone className="text-red" />
-            +91-98765-43210
+            +91 8446915179
           </a>
           <a
             href="mailto:info@ayushenterprise.com"
