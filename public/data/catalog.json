@@ -13,10 +13,19 @@
         "id": "turf-1",
         "name": "FIFA Pro Grade Turf",
         "price": "Contact for Price",
-        "description": "Professional grade football turf.",
+        "description": "Our premium football turf grass is engineered to deliver a professional-grade playing experience with exceptional durability, safety, and performance. Designed to withstand high-impact play, this artificial turf offers excellent shock absorption, reducing stress on players’ joints while ensuring consistent ball roll and traction.\n\nManufactured using high-density, UV-stabilized fibers, the turf maintains its natural green appearance year-round, even under intense sunlight and heavy usage. Its advanced drainage system allows for quick water runoff, making the surface playable in all weather conditions.\n\nIdeal for football grounds, training academies, schools, and sports complexes, this turf requires minimal maintenance while delivering maximum performance—no watering, mowing, or fertilizing needed.\n\nKey Features:\n\nProfessional football-grade surface\n\nHigh durability for intense play\n\nExcellent grip and ball control\n\nShock-absorbing and player-safe\n\nUV-resistant, all-weather performance\n\nLow maintenance, long lifespan\n\nPerfect for creating a world-class football experience, our turf grass combines the look of natural grass with the reliability of modern engineering.",
         "image": "/assets/images/turf-pro.jpg",
-        "photos": [],
-        "videos": []
+        "photos": [
+          "https://res.cloudinary.com/deyymd1fe/image/upload/v1768736352/ayush-enterprise/products/image1-1768736352879-wckovh.png",
+          "https://res.cloudinary.com/deyymd1fe/image/upload/v1768736384/ayush-enterprise/products/image9-1768736384104-fgu9i9.png"
+        ],
+        "videos": [],
+        "specifications": [
+          {
+            "label": "Size",
+            "value": "40x60 meters"
+          }
+        ]
       },
       {
         "id": "turf-2",
