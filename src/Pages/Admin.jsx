@@ -26,7 +26,7 @@ function Admin() {
     const [selectedCatIdForProd, setSelectedCatIdForProd] = useState("");
     const [productForm, setProductForm] = useState({
         id: "", name: "", price: "", description: "", image: "", subCategoryId: "",
-        photos: [], videos: []
+        photos: [], videos: [], specifications: []
     });
     const [productImageFile, setProductImageFile] = useState(null);
     const [uploadingProduct, setUploadingProduct] = useState(false);
@@ -92,6 +92,29 @@ function Admin() {
         setProductForm(prev => ({
             ...prev,
             [type]: prev[type].filter((_, i) => i !== index)
+        }));
+    };
+
+    const addSpecification = () => {
+        setProductForm(prev => ({
+            ...prev,
+            specifications: [...(prev.specifications || []), { label: "", value: "" }]
+        }));
+    };
+
+    const updateSpecification = (index, field, value) => {
+        setProductForm(prev => ({
+            ...prev,
+            specifications: prev.specifications.map((spec, i) => (
+                i === index ? { ...spec, [field]: value } : spec
+            ))
+        }));
+    };
+
+    const removeSpecification = (index) => {
+        setProductForm(prev => ({
+            ...prev,
+            specifications: prev.specifications.filter((_, i) => i !== index)
         }));
     };
 
@@ -191,11 +214,19 @@ function Admin() {
                 }
             }
 
+            const specifications = (productForm.specifications || [])
+                .map(spec => ({
+                    label: (spec.label || "").trim(),
+                    value: (spec.value || "").trim()
+                }))
+                .filter(spec => spec.label || spec.value);
+
             const data = {
                 ...productForm,
                 image: imagePath,
                 photos: photoPaths,
-                videos: videoPaths
+                videos: videoPaths,
+                specifications
             };
 
             if (isEditingProduct) {
@@ -213,7 +244,12 @@ function Admin() {
 
     const startEditProduct = (catId, prod) => {
         setSelectedCatIdForProd(catId);
-        setProductForm(prod);
+        setProductForm({
+            ...prod,
+            photos: prod.photos || [],
+            videos: prod.videos || [],
+            specifications: prod.specifications || []
+        });
         setIsEditingProduct(true);
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
@@ -225,7 +261,7 @@ function Admin() {
     };
 
     const resetProductForm = () => {
-        setProductForm({ id: "", name: "", price: "", description: "", image: "", subCategoryId: "", photos: [], videos: [] });
+        setProductForm({ id: "", name: "", price: "", description: "", image: "", subCategoryId: "", photos: [], videos: [], specifications: [] });
         setProductImageFile(null);
         setIsEditingProduct(false);
     };
@@ -488,6 +524,49 @@ function Admin() {
                                                 </div>
                                             ))}
                                         </div>
+                                    )}
+                                </div>
+                                <div>
+                                    <div className="flex items-center justify-between mb-2">
+                                        <label className="block text-sm font-semibold">Specifications (optional)</label>
+                                        <button
+                                            type="button"
+                                            onClick={addSpecification}
+                                            className="inline-flex items-center gap-2 text-sm text-red-600 hover:text-red-700 font-semibold"
+                                        >
+                                            <FaPlus className="text-xs" /> Add spec
+                                        </button>
+                                    </div>
+                                    {productForm.specifications && productForm.specifications.length > 0 ? (
+                                        <div className="space-y-2">
+                                            {productForm.specifications.map((spec, idx) => (
+                                                <div key={idx} className="grid grid-cols-1 sm:grid-cols-[1fr_1fr_auto] gap-2 items-start">
+                                                    <input
+                                                        type="text"
+                                                        className="w-full p-2 border rounded"
+                                                        placeholder="Label (e.g., Pile Height)"
+                                                        value={spec.label}
+                                                        onChange={(e) => updateSpecification(idx, "label", e.target.value)}
+                                                    />
+                                                    <input
+                                                        type="text"
+                                                        className="w-full p-2 border rounded"
+                                                        placeholder="Value (e.g., 50 mm)"
+                                                        value={spec.value}
+                                                        onChange={(e) => updateSpecification(idx, "value", e.target.value)}
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => removeSpecification(idx)}
+                                                        className="h-10 px-3 border rounded text-red-600 hover:bg-red-50"
+                                                    >
+                                                        Remove
+                                                    </button>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <p className="text-xs text-gray-400">No specifications added.</p>
                                     )}
                                 </div>
                                 <div>

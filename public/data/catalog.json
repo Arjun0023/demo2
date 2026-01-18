@@ -16,7 +16,17 @@
         "description": "ProfesFIFA Pro Grade Turf is a premium, high-performance artificial grass system engineered to meet the rigorous standards of FIFA Quality Pro certification. Designed for elite-level football, this turf delivers an authentic playing experience that mirrors natural grass while offering unmatched durability, safety, and consistency across all levels of professional and competitive play.\n\nBuilt using advanced fiber technology and precision manufacturing, FIFA Pro Grade Turf ensures optimal ball behavior, player traction, shock absorption, and surface stability. It is the preferred choice for professional stadiums, training grounds, academies, and international competition venues where performance, safety, and longevity are non-negotiable.\n\nElite Playing Performance\n\nFIFA Pro Grade Turf is developed to replicate the feel and responsiveness of natural grass, ensuring predictable ball roll, true ball rebound, and controlled ball bounce. The surface provides excellent grip and rotational resistance, allowing players to accelerate, decelerate, and change direction with confidence. Its uniform texture and consistent infill distribution ensure identical playing conditions across the entire field, regardless of weather or usage intensity.\n\nPlayer Safety & Comfort\n\nPlayer welfare is at the core of FIFA Pro Grade Turf design. The turf system offers superior shock absorption and energy restitution, significantly reducing stress on joints and minimizing the risk of impact-related injuries. Advanced backing systems and resilient infill materials help maintain long-term surface elasticity, providing a cushioned yet firm playing base that supports safe, high-speed play.sional grade football turf.",
         "image": "/assets/images/turf-pro.jpg",
         "photos": [],
-        "videos": []
+        "videos": [],
+        "specifications": [
+          {
+            "label": "Size",
+            "value": "16x26 sqcm"
+          },
+          {
+            "label": "Grass",
+            "value": "Green"
+          }
+        ]
       },
       {
         "id": "turf-2",
@@ -25,7 +35,13 @@
         "description": "Durable turf for training grounds.",
         "image": "/assets/images/turf-training.jpg",
         "photos": [],
-        "videos": []
+        "videos": [],
+        "specifications": [
+          {
+            "label": "size",
+            "value": "2"
+          }
+        ]
       }
     ]
   },

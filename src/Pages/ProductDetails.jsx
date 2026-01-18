@@ -111,6 +111,25 @@ function ProductDetails() {
                                 Contact for Inquiry
                                 <FaWhatsapp className="h-5 w-5 text-green-400" />
                             </button>
+                            {product.specifications && product.specifications.length > 0 && (
+                                <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-3">Specifications</h3>
+                                    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
+                                        <table className="w-full text-sm">
+                                            <tbody className="divide-y divide-gray-100">
+                                                {product.specifications.map((spec, idx) => (
+                                                    <tr key={`${spec.label}-${idx}`} className="align-top">
+                                                        <th className="w-1/3 px-4 py-3 text-left font-semibold text-gray-700">
+                                                            {spec.label}
+                                                        </th>
+                                                        <td className="px-4 py-3 text-gray-600">{spec.value}</td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            )}
                             <div className="prose max-w-none text-gray-600 leading-relaxed">
                                 <p>{product.description}</p>
                             </div>
