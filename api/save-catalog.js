@@ -29,6 +29,7 @@ const uploadToCloudinary = async (data, publicId) => {
                 public_id: publicId,
                 resource_type: 'raw',
                 overwrite: true,
+                invalidate: true,
                 format: 'json'
             },
             (error, result) => {

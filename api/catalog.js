@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         });
 
         // Fetch the data
-        const response = await fetch(url);
+        const response = await fetch(`${url}?t=${Date.now()}`);
 
         if (!response.ok) {
             // If file doesn't exist yet (404), return empty array or default
@@ -36,8 +36,8 @@ export default async function handler(req, res) {
 
         const data = await response.json();
 
-        // Cache control - cache for 60 seconds
-        res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate');
+        // Avoid caching so updates show up immediately
+        res.setHeader('Cache-Control', 'no-store');
 
         return res.status(200).json(data);
     } catch (error) {
