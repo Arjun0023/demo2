@@ -42,11 +42,6 @@ const hasPendingCatalogSync = () => {
  */
 export const loadCatalog = async () => {
     try {
-        const localCatalog = readLocalCatalog();
-        if (localCatalog) {
-            return localCatalog;
-        }
-
         const response = await fetch(`/api/catalog?t=${Date.now()}`);
         if (!response.ok) {
             throw new Error('Failed to load catalog');
