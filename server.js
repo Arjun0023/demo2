@@ -152,9 +152,36 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
     }
 });
 
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+
 // GET catalog endpoint
-app.get('/api/catalog', (req, res) => {
+app.get('/api/catalog', async (req, res) => {
     try {
+        if (cloudinaryConfigured) {
+            // Generate URL for the raw file
+            const url = cloudinary.url('ayush-enterprise/data/catalog.json', {
+                resource_type: 'raw',
+                secure: true
+            });
+
+            // Fetch the data with cache buster
+            const response = await fetch(`${url}?t=${Date.now()}`);
+
+            if (response.ok) {
+                const data = await response.json();
+                return res.json(data);
+            } else if (response.status === 404) {
+                // Try reading from local as fallback mostly for seamless migration or dev seed
+                const catalogPath = path.join(__dirname, 'public', 'data', 'catalog.json');
+                if (fs.existsSync(catalogPath)) {
+                    const catalogData = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+                    return res.json(catalogData);
+                }
+                return res.json([]);
+            }
+        }
+
+        // Fallback to local
         const catalogPath = path.join(__dirname, 'public', 'data', 'catalog.json');
 
         if (fs.existsSync(catalogPath)) {
@@ -171,9 +198,32 @@ app.get('/api/catalog', (req, res) => {
 });
 
 // Save catalog endpoint
-app.post('/api/save-catalog', (req, res) => {
+app.post('/api/save-catalog', async (req, res) => {
     try {
         const catalogData = req.body;
+
+        // Save to Cloudinary if configured
+        if (cloudinaryConfigured) {
+            await new Promise((resolve, reject) => {
+                const uploadStream = cloudinary.uploader.upload_stream(
+                    {
+                        folder: 'ayush-enterprise/data',
+                        public_id: 'catalog',
+                        resource_type: 'raw',
+                        overwrite: true,
+                        format: 'json'
+                    },
+                    (error, result) => {
+                        if (error) reject(error);
+                        else resolve(result);
+                    }
+                );
+                uploadStream.end(JSON.stringify(catalogData, null, 2));
+            });
+            console.log('✅ Catalog saved to Cloudinary');
+        }
+
+        // Always save to local disk as well for backup/cache or if Cloudinary fails/is not configured
         const catalogPath = path.join(__dirname, 'public', 'data', 'catalog.json');
 
         // Ensure directory exists

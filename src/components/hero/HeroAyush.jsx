@@ -69,7 +69,7 @@ function HeroAyush() {
 
               <PrimaryHeading
                 title="AYUSH SPORTS"
-                subtitle="World-Class Football Courts, Turfs & Gym Equipment"
+                subtitle="World-Class Football Courts, Turfs & Gym Flooring"
               />
 
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center xl:justify-start pt-4">

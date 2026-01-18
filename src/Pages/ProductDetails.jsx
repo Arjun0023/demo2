@@ -88,7 +88,7 @@ function ProductDetails() {
                                 <p>{product.description}</p>
                             </div>
 
-                            <button className="w-full bg-red-600 text-white py-4 rounded-lg font-bold hover:bg-red-700 transition transform hover:-translate-y-1">
+                            <button className="w-full bg-[#000000] text-white py-4 rounded-lg font-bold hover:bg-gray-800 transition transform hover:-translate-y-1">
                                 Contact for Inquiry
                             </button>
 

@@ -1,5 +1,48 @@
-import fs from 'fs';
-import path from 'path';
+import { v2 as cloudinary } from 'cloudinary';
+
+// Initialize Cloudinary
+const initializeCloudinary = () => {
+    try {
+        if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
+            console.warn('Cloudinary credentials missing');
+            return false;
+        }
+
+        cloudinary.config({
+            cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+            api_key: process.env.CLOUDINARY_API_KEY,
+            api_secret: process.env.CLOUDINARY_API_SECRET
+        });
+
+        return true;
+    } catch (error) {
+        console.error('Failed to initialize Cloudinary:', error.message);
+        return false;
+    }
+};
+
+const uploadToCloudinary = async (data, publicId) => {
+    return new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream(
+            {
+                folder: 'ayush-enterprise/data',
+                public_id: publicId,
+                resource_type: 'raw',
+                overwrite: true,
+                format: 'json'
+            },
+            (error, result) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(result.secure_url);
+                }
+            }
+        );
+
+        uploadStream.end(JSON.stringify(data, null, 2));
+    });
+};
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -9,24 +52,20 @@ export default async function handler(req, res) {
     try {
         const catalogData = req.body;
 
-        // Write to public/data/catalog.json
-        // Note: On Vercel, this will only work during build time
-        // For runtime updates, you need a database (Vercel KV, PostgreSQL, etc.)
-        const catalogPath = path.join(process.cwd(), 'public', 'data', 'catalog.json');
+        if (initializeCloudinary()) {
+            await uploadToCloudinary(catalogData, 'catalog');
+            console.log('✅ Catalog saved to Cloudinary');
 
-        // Ensure directory exists
-        const dataDir = path.dirname(catalogPath);
-        if (!fs.existsSync(dataDir)) {
-            fs.mkdirSync(dataDir, { recursive: true });
+            return res.status(200).json({
+                success: true,
+                message: 'Catalog saved to Cloudinary successfully'
+            });
+        } else {
+            console.warn('⚠️ Cloudinary not configured, cannot save persistent data on Vercel.');
+            return res.status(500).json({
+                error: 'Cloudinary not configured. Data persistence requires Cloudinary credentials.'
+            });
         }
-
-        // Write catalog file
-        fs.writeFileSync(catalogPath, JSON.stringify(catalogData, null, 2));
-
-        return res.status(200).json({
-            success: true,
-            message: 'Catalog saved successfully'
-        });
     } catch (error) {
         console.error('Save catalog error:', error);
         return res.status(500).json({ error: error.message });

@@ -41,6 +41,7 @@ export default {
     },
     colors: {
       transparent: "transparent",
+      black: "#000000",
       white: "#ffffff",
       red: "#ff0336",
       gray: {

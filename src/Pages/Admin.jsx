@@ -252,7 +252,7 @@ function Admin() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <button className="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded transition-colors">
+                        <button className="w-full bg-[#000000] hover:bg-gray-800 text-white py-2 rounded transition-colors">
                             Login
                         </button>
                         <p className="text-xs text-gray-500 text-center">Hint: admin / admin123</p>
@@ -341,7 +341,7 @@ function Admin() {
                                 <div className="flex gap-2 pt-2">
                                     <button
                                         type="submit"
-                                        className="flex-1 bg-red-600 text-white py-2 rounded hover:bg-red-700 transition disabled:bg-gray-400"
+                                        className="flex-1 bg-[#000000] text-white py-2 rounded hover:bg-gray-800 transition disabled:bg-gray-400"
                                         disabled={uploadingCategory}
                                     >
                                         {uploadingCategory ? "Saving..." : (isEditingCategory ? "Save Changes" : "Add Category")}
@@ -498,7 +498,7 @@ function Admin() {
                                 <div className="flex gap-2 pt-2">
                                     <button
                                         type="submit"
-                                        className="flex-1 bg-red-600 text-white py-2 rounded hover:bg-red-700 transition disabled:bg-gray-400"
+                                        className="flex-1 bg-[#000000] text-white py-2 rounded hover:bg-gray-800 transition disabled:bg-gray-400"
                                         disabled={uploadingProduct}
                                     >
                                         {uploadingProduct ? "Saving..." : (isEditingProduct ? "Save Changes" : "Add Product")}
