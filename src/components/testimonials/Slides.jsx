@@ -1,21 +1,21 @@
 export const slides = [
   {
     quote:
-      "I've been purchasing equipment from Ayush Enterprise for the past 2 years and their quality is outstanding. The team is knowledgeable and supportive, the equipment is top-notch, and their after-sales service is excellent.",
-    name: "James Anderson",
-    desc: "Gym Owner",
+      "Expert in BOX cricket setup, badminton court setup, tennis court, football court, basketball court, and many more services.",
+    name: "Kalpesh Goswami",
+    desc: "BOX cricket, badminton, tennis, football, and basketball court setup client",
   },
   {
     quote:
-      "Ayush Enterprise provided all the equipment for my home gym. Their prices are competitive, delivery was prompt, and the quality of equipment exceeds my expectations. Highly recommended!",
-    name: "Ketty Mario",
-    desc: "Fitness Enthusiast",
+      "Got the best cricket box setup from Ayush Sports. I'm so happy with the quality and service.",
+    name: "Sakib Ali",
+    desc: "Cricket Box Client",
   },
   {
     quote:
-      "As a commercial gym owner, I trust Ayush Enterprise for all our equipment needs. Their professional guidance in selecting the right equipment and excellent support makes them our go-to supplier.",
+      "From training sessions to hosting tournaments, Ayush Sports has everything we need. The professional-grade equipment is a game changer.",
     name: "Susan Brown",
-    desc: "Fitness Center Owner",
+    desc: "Coach",
   },
 ];
 

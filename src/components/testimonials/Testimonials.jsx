@@ -8,9 +8,9 @@ function Testimonials() {
     <section className="overflow-x-clip px-6 py-32 text-center">
       <div className="container space-y-20 xl:space-y-32">
         <div>
-          <SecondaryHeading>Testimonials</SecondaryHeading>
+          <SecondaryHeading>Ayush Sports Reviews</SecondaryHeading>
           <TertiaryHeading>
-            Some reviews from our trusted clients
+            World-class football courts, turfs, and equipment trusted by players
           </TertiaryHeading>
         </div>
 

@@ -6,29 +6,30 @@ function Info() {
   return (
     <div>
       <h3 className="mb-4 text-3xl font-bold">
-        We are here for help you To Shape Your Body
+        Build your game at Ayush Enterprise
       </h3>
       <p className="font-medium text-gray-300">
-        when an unknown printer took a galley of type and scrambled it to make a
-        type specimen book. It has survived not only five centuries, but also
-        the leap into electronic types etting.type specimen It has survived not
-        only five centuries, but also the type specimen book.
+        Ayush Enterprise (Ayush Sports) delivers world-class football courts and
+        turfs with professional-grade equipment and flexible rental options.
+        From casual kickabouts to competitive leagues, we help athletes and
+        sports enthusiasts train, host tournaments, and play at their best in a
+        safe, community-first environment.
       </p>
       <div className="grid 2xl:grid-cols-2 2xl:gap-y-8">
         <div>
-          <h4 className={headingStyles}>Tehran, Iran</h4>
+          <h4 className={headingStyles}>Pune, India</h4>
           <address className="font-medium not-italic text-gray-300">
-            7th Golestan St,
-            <br /> Pasdaran St, Tehran
+            Ayush Enterprise,
+            <br />  Shop No 1, Nakhate Complex,<br />
+                    Vijay Nagar, Kalewadi,<br />
+                    Pimpri-Chinchwad, Pune,<br />
+                    Maharashtra 411017
           </address>
         </div>
         <div>
           <h4 className={headingStyles}>Opening Hours</h4>
           <p className="whitespace-nowrap font-medium text-gray-300">
-            Mon to Fri: 7:30 am — 1:00 am
-          </p>
-          <p className="whitespace-nowrap font-medium text-gray-300">
-            Mon to Fri: 7:30 am — 1:00 am
+            Mon to Sat: 9:00 am — 9:00 pm
           </p>
         </div>
         <div>

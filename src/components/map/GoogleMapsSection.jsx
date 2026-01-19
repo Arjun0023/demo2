@@ -22,7 +22,7 @@ function GoogleMapsSection() {
             Find Us on the Map
           </TertiaryHeading>
           <p className="text-gray-350 text-sm sm:text-base px-4">
-            Visit our showroom to experience our premium gym equipment firsthand
+            Visit our store to experience our premium sports flooring solutions firsthand
           </p>
         </div>
 
@@ -61,9 +61,10 @@ function GoogleMapsSection() {
                   <div>
                     <p className="font-semibold text-gray-600 text-sm sm:text-base">Ayush Enterprise</p>
                     <p className="text-gray-350 text-sm sm:text-base">
-                      123, Fitness Avenue,<br />
-                      Near Sports Complex,<br />
-                      New Delhi - 110001
+                    Shop No 1, Nakhate Complex,<br />
+                    Vijay Nagar, Kalewadi,<br />
+                    Pimpri-Chinchwad, Pune,<br />
+                    Maharashtra 411017
                     </p>
                   </div>
                 </div>
@@ -80,8 +81,8 @@ function GoogleMapsSection() {
               <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-white rounded-lg">
                 <p className="text-xs sm:text-sm text-gray-350">
                   <span className="font-semibold">Store Hours:</span><br />
-                  Monday - Saturday: 10:00 AM - 8:00 PM<br />
-                  Sunday: 11:00 AM - 6:00 PM
+                  Monday - Saturday: 9:00 AM - 9:00 PM<br />
+                  Sunday: Closed
                 </p>
               </div>
             </div>

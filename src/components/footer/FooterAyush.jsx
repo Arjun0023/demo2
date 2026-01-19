@@ -33,9 +33,9 @@ function FooterAyush() {
           </p>
           <Logo />
           <p className="text-gray-100">
-            Premium gym equipment supplier serving fitness enthusiasts and commercial gyms since 2015.
+    Premium sports flooring solutions supplier serving sports enthusiasts and commercial gyms since 2015.
           </p>
-          <p className="text-sm text-gray-200">GSTIN: ADD_GSTIN_HERE</p>
+          <p className="text-sm text-gray-200">GSTIN: 27AOKPP3392N1Z5</p>
           <SocialLinks />
           <p className="text-sm text-gray-200">
             © {new Date().getFullYear()} Ayush Sports. All rights reserved.
@@ -97,16 +97,17 @@ function FooterAyush() {
             <div className="flex items-start gap-3 text-gray-100">
               <FaMapMarkerAlt className="text-red mt-1 flex-shrink-0" />
               <address className="not-italic">
-                123, Fitness Avenue,<br />
-                Near Sports Complex,<br />
-                New Delhi - 110001
+              Shop No 1, Nakhate Complex,<br />
+                    Vijay Nagar, Kalewadi,<br />
+                    Pimpri-Chinchwad, Pune,<br />
+                    Maharashtra 411017
               </address>
             </div>
             <div className="mt-4 pt-4 border-t border-gray-400">
               <p className="text-sm text-gray-200">
                 <span className="font-semibold">Store Hours:</span><br />
-                Mon-Sat: 10:00 AM - 8:00 PM<br />
-                Sunday: 11:00 AM - 6:00 PM
+                Mon-Sat: 9:00 AM - 9:00 PM<br />
+                Sunday: Closed
               </p>
             </div>
           </div>
