@@ -11,6 +11,8 @@ function ProductDetails() {
     const [product, setProduct] = useState(null);
     const [category, setCategory] = useState(null);
     const [selectedImage, setSelectedImage] = useState("");
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const whatsappNumber = "918446915179";
 
     useEffect(() => {
@@ -30,7 +32,41 @@ function ProductDetails() {
         setProduct(foundProduct);
         setCategory(foundCategory);
         setSelectedImage(foundProduct?.image || "");
+        setSelectedIndex(0);
     }, [id, catalog]);
+
+    const images = product ? [product.image, ...(product.photos || [])].filter(Boolean) : [];
+    const canSlide = images.length > 1;
+
+    const goToIndex = (index) => {
+        if (!images.length) {
+            return;
+        }
+        const normalized = ((index % images.length) + images.length) % images.length;
+        setSelectedIndex(normalized);
+        setSelectedImage(images[normalized]);
+    };
+
+    useEffect(() => {
+        if (!isLightboxOpen) {
+            return;
+        }
+
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                setIsLightboxOpen(false);
+            }
+        };
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [isLightboxOpen]);
 
     if (!product) {
         return (
@@ -57,12 +93,39 @@ function ProductDetails() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 p-6 sm:p-8 lg:p-10">
                         {/* Main Image */}
                         <div className="space-y-4">
-                            <div className="aspect-video rounded-2xl overflow-hidden bg-gray-100 border">
-                                <img
-                                    src={selectedImage || product.image}
-                                    alt={product.name}
-                                    className="w-full h-full object-cover"
-                                />
+                            <div className="relative">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsLightboxOpen(true)}
+                                    className="aspect-video rounded-2xl overflow-hidden bg-gray-100 border cursor-zoom-in w-full"
+                                    aria-label={`View ${product.name} image in full screen`}
+                                >
+                                    <img
+                                        src={selectedImage || product.image}
+                                        alt={product.name}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </button>
+                                {canSlide && (
+                                    <>
+                                        <button
+                                            type="button"
+                                            onClick={() => goToIndex(selectedIndex - 1)}
+                                            className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full bg-black/70 text-white w-9 h-9 flex items-center justify-center hover:bg-black transition"
+                                            aria-label="Previous image"
+                                        >
+                                            ‹
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={() => goToIndex(selectedIndex + 1)}
+                                            className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full bg-black/70 text-white w-9 h-9 flex items-center justify-center hover:bg-black transition"
+                                            aria-label="Next image"
+                                        >
+                                            ›
+                                        </button>
+                                    </>
+                                )}
                             </div>
 
                             {/* Photo Gallery */}
@@ -76,7 +139,15 @@ function ProductDetails() {
                                                 <button
                                                     key={idx}
                                                     type="button"
-                                                    onClick={() => setSelectedImage(photo)}
+                                                    onClick={() => {
+                                                        const index = images.indexOf(photo);
+                                                        if (index !== -1) {
+                                                            goToIndex(index);
+                                                        } else {
+                                                            setSelectedImage(photo);
+                                                        }
+                                                        setIsLightboxOpen(true);
+                                                    }}
                                                     className={`aspect-square rounded-lg overflow-hidden border transition ${isActive ? "ring-2 ring-red-500 border-red-200" : "hover:opacity-90"}`}
                                                     aria-label={`View ${product.name} photo ${idx + 1}`}
                                                 >
@@ -168,6 +239,35 @@ function ProductDetails() {
                     </div>
                 </div>
             </div>
+
+            {isLightboxOpen && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 py-8"
+                    onClick={() => setIsLightboxOpen(false)}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={`${product.name} full screen image`}
+                >
+                    <div
+                        className="relative max-h-full max-w-6xl w-full"
+                        onClick={(event) => event.stopPropagation()}
+                    >
+                        <button
+                            type="button"
+                            onClick={() => setIsLightboxOpen(false)}
+                            className="absolute -top-10 right-0 text-white text-sm font-semibold tracking-wide uppercase"
+                            aria-label="Close full screen image"
+                        >
+                            Close
+                        </button>
+                        <img
+                            src={selectedImage || product.image}
+                            alt={product.name}
+                            className="max-h-[80vh] w-full object-contain rounded-xl bg-black"
+                        />
+                    </div>
+                </div>
+            )}
         </section>
     );
 }
