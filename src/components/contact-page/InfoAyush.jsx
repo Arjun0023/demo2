@@ -11,7 +11,7 @@ function InfoAyush() {
       </h3>
       <p className="font-medium text-gray-300">
 
-      "Ayush enterprise (Ayush sports) is a premier sports facility specialising in world-class football courts and turfs, designed to provide athletes and sports enthusiasts with an exceptional playing experience. Our state-of-the-art facilities feature high-quality artificial and natural turfs that cater to all levels of play, from casual games to competitive leagues. Whether you’re looking for a space to train, host a tournament, or enjoy a friendly match, we offer flexible rental options, professional-grade equipment, and a vibrant community atmosphere. Our commitment to quality, safety, and customer satisfaction makes us the go-to destination for artificial turfs , football court, gym equipment and many more gymming products"
+      "Ayush Sports is a premier sports facility specialising in world-class football courts and turfs, designed to provide athletes and sports enthusiasts with an exceptional playing experience. Our state-of-the-art facilities feature high-quality artificial and natural turfs that cater to all levels of play, from casual games to competitive leagues. Whether you’re looking for a space to train, host a tournament, or enjoy a friendly match, we offer flexible rental options, professional-grade equipment, and a vibrant community atmosphere. Our commitment to quality, safety, and customer satisfaction makes us the go-to destination for artificial turfs , football court, gym equipment and many more gymming products"
       </p>
       
       <div className="grid 2xl:grid-cols-2 2xl:gap-y-8">

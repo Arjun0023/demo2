@@ -19,7 +19,7 @@ function AboutAyush() {
 
             <div className="space-y-4 text-gray-350 mb-6 sm:mb-8 text-sm sm:text-base">
               <p>
-                Ayush enterprise (Ayush sports) is a premier sports facility specialising in world-class
+                Ayush Sports is a premier sports facility specialising in world-class
                 football courts and turfs, designed to provide athletes and sports enthusiasts with an
                 exceptional playing experience. Our state-of-the-art facilities feature high-quality
                 artificial and natural turfs that cater to all levels of play, from casual games to

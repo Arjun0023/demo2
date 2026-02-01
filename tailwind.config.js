@@ -31,6 +31,7 @@ export default {
     },
     fontFamily: {
       sans: "Montserrat, sans-serif",
+      display: "Anton, Impact, Arial Narrow, sans-serif",
     },
     fontWeight: {
       thin: "100",
@@ -38,6 +39,8 @@ export default {
       medium: "500",
       semibold: "600",
       bold: "700",
+      extrabold: "800",
+      black: "900",
     },
     colors: {
       transparent: "transparent",

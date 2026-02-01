@@ -60,19 +60,19 @@ function HeroAyush() {
             <div className="space-y-6 sm:space-y-8 drop-shadow-xl">
               {/* Secondary heading with red accent */}
               <div className="inline-block">
-                <div className="bg-red px-6 py-2 sm:px-8 sm:py-3">
-                  <span className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">
-                    Premuim Sports Flooring Solutions
+                <div className="bg-red px-4 py-2 sm:px-4 sm:py-3">
+                  <span className="text-sm sm:text-base font-bold text-white ">
+                    Premuim Sports Flooring Solutions by AYUSH SPORTS
                   </span>
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                  Ayush Sports
-                </h1>
-                <p className="text-3xl sm:text-4xl lg:text-6xl font-semibold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                  Design Your Sports Arena
+              <div className="space-y-9">
+                {/* <h1 className="text-2xl sm:text-4xl lg:text-3xl font-bold leading-tight text-white px-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                
+                </h1> */}
+                <p className="text-5xl sm:text-7xl lg:text-8xl font-bold font-black tracking-tight leading-[0.95] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                  Design Your Sports Arena.
                 </p>
                 <p className="text-lg sm:text-xl lg:text-3xl font-semibold text-white/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                   World-Class Football Courts, Turfs & Gym Flooring

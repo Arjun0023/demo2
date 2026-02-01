@@ -9,7 +9,7 @@ function Info() {
         Build your game at Ayush Enterprise
       </h3>
       <p className="font-medium text-gray-300">
-        Ayush Enterprise (Ayush Sports) delivers world-class football courts and
+        Ayush Sports delivers world-class football courts and
         turfs with professional-grade equipment and flexible rental options.
         From casual kickabouts to competitive leagues, we help athletes and
         sports enthusiasts train, host tournaments, and play at their best in a

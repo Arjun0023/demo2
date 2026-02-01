@@ -26,9 +26,25 @@ function Coaches() {
           <h4 className="text-2xl font-bold">John Lewis</h4>
           <p className="font-medium text-gray-350">Yoga Trainer</p>
           <div className="flex justify-center gap-4 text-lg text-gray-350">
-            <FaFacebookF className={iconStyles} />
+            <a
+              className={iconStyles}
+              href="https://www.facebook.com/share/17wAqKj4YB/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebookF />
+            </a>
             <FaXTwitter className={iconStyles} />
-            <FaInstagram className={iconStyles} />
+            <a
+              className={iconStyles}
+              href="https://www.instagram.com/sport.ayush?igsh=MXExNHgwZ2Jhem1tOQ=="
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
             <FaRegEnvelope className={iconStyles} />
           </div>
         </div>
@@ -44,9 +60,25 @@ function Coaches() {
           <h4 className="text-2xl font-bold">Jonathan Doe</h4>
           <p className="font-medium text-gray-350">Crossfit Trainer</p>
           <div className="flex justify-center gap-4 text-lg text-gray-350">
-            <FaFacebookF className={iconStyles} />
+            <a
+              className={iconStyles}
+              href="https://www.facebook.com/share/17wAqKj4YB/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebookF />
+            </a>
             <FaXTwitter className={iconStyles} />
-            <FaInstagram className={iconStyles} />
+            <a
+              className={iconStyles}
+              href="https://www.instagram.com/sport.ayush?igsh=MXExNHgwZ2Jhem1tOQ=="
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
             <FaRegEnvelope className={iconStyles} />
           </div>
         </div>
@@ -62,9 +94,25 @@ function Coaches() {
           <h4 className="text-2xl font-bold">Anna June</h4>
           <p className="font-medium text-gray-350">Personal Trainer</p>
           <div className="flex justify-center gap-4 text-lg text-gray-350">
-            <FaFacebookF className={iconStyles} />
+            <a
+              className={iconStyles}
+              href="https://www.facebook.com/share/17wAqKj4YB/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebookF />
+            </a>
             <FaXTwitter className={iconStyles} />
-            <FaInstagram className={iconStyles} />
+            <a
+              className={iconStyles}
+              href="https://www.instagram.com/sport.ayush?igsh=MXExNHgwZ2Jhem1tOQ=="
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
             <FaRegEnvelope className={iconStyles} />
           </div>
         </div>

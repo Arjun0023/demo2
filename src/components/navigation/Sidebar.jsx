@@ -4,8 +4,8 @@ import {
   FaPhone,
   FaEnvelope,
   FaFacebookF,
-  FaXTwitter,
   FaInstagram,
+  FaWhatsapp,
 } from "react-icons/fa6";
 
 import CloseButton from "./CloseButton";
@@ -38,7 +38,7 @@ function Sidebar({ isSidebarOpen, handleToggleSidebar }) {
       <section className="space-y-4">
         <h2 className="text-xl font-bold">About Us</h2>
         <p className="font-medium text-gray-400">
-          Ayush enterprise (Ayush sports) is a premier sports facility
+          Ayush Sports is a premier sports facility
           specialising in world-class football courts and turfs, designed to
           provide athletes and sports enthusiasts with an exceptional playing
           experience. Our state-of-the-art facilities feature high-quality
@@ -105,15 +105,31 @@ function Sidebar({ isSidebarOpen, handleToggleSidebar }) {
       <section className="space-y-4">
         <h2 className="text-xl font-bold">Follow Us</h2>
         <div className="flex gap-3">
-          <Link className="rounded-full bg-red p-3 text-white">
+          <a
+            className="rounded-full bg-red p-3 text-white"
+            href="https://www.facebook.com/share/17wAqKj4YB/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaFacebookF className="h-auto w-6" />
-          </Link>
-          <Link className="rounded-full bg-red p-3 text-white">
-            <FaXTwitter className="h-auto w-6" />
-          </Link>
-          <Link className="rounded-full bg-red p-3 text-white">
+          </a>
+          <a
+            className="rounded-full bg-red p-3 text-white"
+            href="https://wa.me/918446915179"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="WhatsApp"
+          >
+            <FaWhatsapp className="h-auto w-6" />
+          </a>
+          <a
+            className="rounded-full bg-red p-3 text-white"
+            href="https://www.instagram.com/sport.ayush?igsh=MXExNHgwZ2Jhem1tOQ=="
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaInstagram className="h-auto w-6" />
-          </Link>
+          </a>
         </div>
       </section>
     </aside>
