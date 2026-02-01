@@ -42,7 +42,7 @@ function MobileNavAyush({ isNavOpen, onToggleNav }) {
           className="flex items-center gap-3 text-white hover:text-red transition-colors"
         >
           <FaPhone className="w-5 h-5" />
-          +91 8446915179
+          +91 7410 774 989
         </a>
         
         <button

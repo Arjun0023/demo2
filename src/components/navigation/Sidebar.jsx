@@ -92,7 +92,7 @@ function Sidebar({ isSidebarOpen, handleToggleSidebar }) {
             to="tel:+918446915179"
             className="focus flex items-center gap-2 font-medium text-gray-400 transition-colors duration-300 hover:text-red"
           >
-            <FaPhone className="text-red" /> +91 8446915179
+            <FaPhone className="text-red" /> +91 7410 774 989
           </Link>
           <Link
             to="mailto:info@ayushenterprise.com"

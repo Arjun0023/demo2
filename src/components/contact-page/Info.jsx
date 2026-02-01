@@ -38,7 +38,7 @@ function Info() {
             href="tel:+918446915179"
             className="block font-medium text-gray-300"
           >
-            +91 8446915179
+            +91 7410 774 989
           </a>
           <a
             href="mailto:info@ayushenterprise.com"

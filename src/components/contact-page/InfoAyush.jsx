@@ -56,7 +56,7 @@ function InfoAyush() {
             className="flex items-center gap-3 font-medium text-gray-300 hover:text-red transition-colors mb-2"
           >
             <FaPhone className="text-red" />
-            +91 8446915179
+            +91 7410 774 989
           </a>
           <a
             href="mailto:info@ayushenterprise.com"
