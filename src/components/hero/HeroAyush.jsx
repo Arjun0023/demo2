@@ -61,7 +61,7 @@ function HeroAyush() {
               {/* Secondary heading with red accent */}
               <div className="inline-block">
                 <div className="bg-red px-4 py-2 sm:px-4 sm:py-3">
-                  <span className="text-sm sm:text-base font-bold text-white ">
+                  <span className="text-[11px] sm:text-base font-bold text-white whitespace-nowrap tracking-tight">
                     Premuim Sports Flooring Solutions by AYUSH SPORTS
                   </span>
                 </div>
