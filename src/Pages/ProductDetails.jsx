@@ -3,6 +3,8 @@ import { useProducts } from "../context/ProductContext";
 import { useState, useEffect } from "react";
 import { FaWhatsapp } from "react-icons/fa6";
 import { FaArrowLeft } from "react-icons/fa";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 function ProductDetails() {
     const { id } = useParams();
@@ -201,8 +203,10 @@ function ProductDetails() {
                                     </div>
                                 </div>
                             )}
-                            <div className="prose max-w-none text-gray-600 leading-relaxed">
-                                <p>{product.description}</p>
+                            <div className="prose max-w-none text-gray-600 leading-relaxed prose-headings:mt-6 prose-headings:mb-3 prose-h1:text-2xl sm:prose-h1:text-3xl prose-h2:text-xl sm:prose-h2:text-2xl prose-h3:text-lg sm:prose-h3:text-xl prose-ul:list-disc prose-ol:list-decimal prose-ul:list-outside prose-ol:list-outside prose-ul:pl-6 prose-ol:pl-6 prose-li:my-1 prose-li:pl-1 prose-hr:my-6 prose-strong:text-gray-800">
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                    {product.description || ""}
+                                </ReactMarkdown>
                             </div>
 
                             <button

@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import { loadCatalog, saveCatalog } from "../utils/api";
+import { createContext, useContext, useState, useEffect, useRef } from "react";
+import { loadCatalog, saveCatalog, cacheCatalogLocally } from "../utils/api";
 
 const ProductContext = createContext();
 
@@ -9,6 +9,7 @@ export const ProductProvider = ({ children }) => {
     const [catalog, setCatalog] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const skipNextSaveRef = useRef(true);
 
     const [isSaving, setIsSaving] = useState(false);
 
@@ -29,20 +30,28 @@ export const ProductProvider = ({ children }) => {
 
     // Save catalog to JSON file whenever it changes (debounced)
     useEffect(() => {
-        if (!isLoading && catalog.length > 0) {
-            setIsSaving(true);
-            const timeoutId = setTimeout(async () => {
-                try {
-                    await saveCatalog(catalog);
-                } catch (error) {
-                    console.error('Failed to save catalog:', error);
-                } finally {
-                    setIsSaving(false);
-                }
-            }, 500); // Debounce saves by 500ms
-
-            return () => clearTimeout(timeoutId);
+        if (isLoading) {
+            return;
         }
+
+        if (skipNextSaveRef.current) {
+            skipNextSaveRef.current = false;
+            return;
+        }
+
+        cacheCatalogLocally(catalog);
+        setIsSaving(true);
+        const timeoutId = setTimeout(async () => {
+            try {
+                await saveCatalog(catalog);
+            } catch (error) {
+                console.error('Failed to save catalog:', error);
+            } finally {
+                setIsSaving(false);
+            }
+        }, 500); // Debounce saves by 500ms
+
+        return () => clearTimeout(timeoutId);
     }, [catalog, isLoading]);
 
     const loginAdmin = (username, password) => {

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useProducts } from "../context/ProductContext";
 import { FaEdit, FaTrash, FaPlus, FaImage } from "react-icons/fa";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { uploadFile, validateFile } from "../utils/api";
 
 function Admin() {
@@ -470,7 +472,22 @@ function Admin() {
                                         onChange={handleProductImageChange}
                                         required={!productForm.image}
                                     />
-                                    {productForm.image && <img src={productForm.image} alt="Preview" className="w-full h-32 object-cover mt-2 rounded bg-gray-100" />}
+                                    {productForm.image && (
+                                        <div className="relative mt-2">
+                                            <img src={productForm.image} alt="Preview" className="w-full h-32 object-cover rounded bg-gray-100" />
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setProductForm(prev => ({ ...prev, image: "" }));
+                                                    setProductImageFile(null);
+                                                }}
+                                                className="absolute -top-2 -right-2 bg-black text-white rounded-full w-6 h-6 flex items-center justify-center text-sm"
+                                                aria-label="Remove main product image"
+                                            >
+                                                &times;
+                                            </button>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div>
@@ -570,8 +587,22 @@ function Admin() {
                                     )}
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-semibold mb-1">Description</label>
-                                    <textarea className="w-full p-2 border rounded h-20" value={productForm.description} onChange={e => setProductForm({ ...productForm, description: e.target.value })} required></textarea>
+                                    <label className="block text-sm font-semibold mb-1">Description (Markdown supported)</label>
+                                    <textarea
+                                        className="w-full p-2 border rounded h-28"
+                                        value={productForm.description}
+                                        onChange={e => setProductForm({ ...productForm, description: e.target.value })}
+                                        placeholder="Use Markdown for formatting, e.g. **bold**, *italic*, lists, and headings."
+                                        required
+                                    ></textarea>
+                                    <div className="mt-3 rounded border bg-gray-50 p-3">
+                                        <p className="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">Preview</p>
+                                        <div className="prose max-w-none text-gray-700 prose-headings:mt-6 prose-headings:mb-3 prose-h1:text-2xl sm:prose-h1:text-3xl prose-h2:text-xl sm:prose-h2:text-2xl prose-h3:text-lg sm:prose-h3:text-xl prose-ul:list-disc prose-ol:list-decimal prose-ul:list-outside prose-ol:list-outside prose-ul:pl-6 prose-ol:pl-6 prose-li:my-1 prose-li:pl-1 prose-hr:my-6 prose-strong:text-gray-800">
+                                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                                {productForm.description || "Nothing to preview yet."}
+                                            </ReactMarkdown>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="flex gap-2 pt-2">

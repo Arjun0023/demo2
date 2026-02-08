@@ -42,6 +42,12 @@ const hasPendingCatalogSync = () => {
  */
 export const loadCatalog = async () => {
     try {
+        const pending = hasPendingCatalogSync();
+        const localCatalog = readLocalCatalog();
+        if (pending && localCatalog) {
+            return localCatalog;
+        }
+
         const response = await fetch(`/api/catalog?t=${Date.now()}`, {
             cache: 'no-store'
         });
@@ -75,6 +81,7 @@ export const loadCatalog = async () => {
  * Note: This requires a backend endpoint in production
  */
 export const saveCatalog = async (catalogData) => {
+    writeLocalCatalog(catalogData, true);
     try {
         const response = await fetch('/api/save-catalog', {
             method: 'POST',
@@ -89,13 +96,31 @@ export const saveCatalog = async (catalogData) => {
         }
 
         const data = await response.json();
-        writeLocalCatalog(catalogData, false);
-        return data;
+
+        let serverMatches = false;
+        try {
+            const verifyResponse = await fetch(`/api/catalog?t=${Date.now()}`, {
+                cache: 'no-store'
+            });
+            if (verifyResponse.ok) {
+                const serverData = await verifyResponse.json();
+                serverMatches = JSON.stringify(serverData) === JSON.stringify(catalogData);
+            }
+        } catch (verifyError) {
+            serverMatches = false;
+        }
+
+        writeLocalCatalog(catalogData, !serverMatches);
+        return { ...data, verified: serverMatches };
     } catch (error) {
         console.warn('Error saving catalog, storing locally:', error);
         writeLocalCatalog(catalogData, true);
         return { success: false, local: true, error: error.message };
     }
+};
+
+export const cacheCatalogLocally = (catalogData) => {
+    writeLocalCatalog(catalogData, true);
 };
 
 /**
