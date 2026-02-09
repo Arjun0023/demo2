@@ -15,7 +15,7 @@ function ProductDetails() {
     const [selectedImage, setSelectedImage] = useState("");
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-    const whatsappNumber = "‪917410774989‬";
+    const whatsappNumber = "917410774989";
 
     useEffect(() => {
         // Find product across all categories

@@ -3,7 +3,7 @@ import { FaWhatsapp } from "react-icons/fa";
 function WhatsAppButton() {
   const handleClick = () => {
     window.open(
-      "https://wa.me/‪917410774989‬?text=Hi%2C%20I%27m%20interested%20in%20your%20gym%20equipment%20catalog.",
+      "https://wa.me/917410774989?text=Hi%2C%20I%27m%20interested%20in%20your%20gym%20equipment%20catalog.",
       "_blank"
     );
   };

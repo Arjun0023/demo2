@@ -10,7 +10,7 @@ function HeroAyush() {
   const navigate = useNavigate();
   const handleWhatsAppClick = () => {
     window.open(
-      "https://wa.me/‪917410774989‬?text=Hi%2C%20I%27m%20interested%20in%20your%20turf%20flooring%20solutions.",
+      "https://wa.me/917410774989?text=Hi%2C%20I%27m%20interested%20in%20your%20turf%20flooring%20solutions.",
       "_blank"
     );
   };
