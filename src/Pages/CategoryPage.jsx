@@ -11,7 +11,7 @@ function CategoryPage() {
     const navigate = useNavigate();
 
     const category = catalog.find((cat) => cat.id === id);
-    const whatsappNumber = "918446915179";
+    const whatsappNumber = "‪917410774989‬";
 
     const openWhatsApp = (event, productName) => {
         event.stopPropagation();

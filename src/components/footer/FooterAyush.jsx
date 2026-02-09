@@ -81,7 +81,7 @@ function FooterAyush() {
           <h3 className="mb-6 text-xl font-bold">Contact Us</h3>
           <div className="space-y-4">
             <a
-              href="tel:+918446915179"
+              href="tel:+‪917410774989‬"
               className="flex items-center gap-3 text-gray-100 hover:text-red transition-colors"
             >
               <FaPhone className="text-red" />

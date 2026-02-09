@@ -6,7 +6,7 @@ import { FaDirections, FaPhone, FaWhatsapp } from "react-icons/fa";
 function MobileNavAyush({ isNavOpen, onToggleNav }) {
   const handleWhatsAppClick = () => {
     window.open(
-      "https://wa.me/918446915179?text=Hi%2C%20I%27m%20interested%20in%20your%20gym%20equipment%20catalog.",
+      "https://wa.me/‪917410774989‬?text=Hi%2C%20I%27m%20interested%20in%20your%20gym%20equipment%20catalog.",
       "_blank"
     );
   };
@@ -38,7 +38,7 @@ function MobileNavAyush({ isNavOpen, onToggleNav }) {
           Get Directions
         </a>
         <a
-          href="tel:+918446915179"
+          href="tel:+‪917410774989‬"
           className="flex items-center gap-3 text-white hover:text-red transition-colors"
         >
           <FaPhone className="w-5 h-5" />
