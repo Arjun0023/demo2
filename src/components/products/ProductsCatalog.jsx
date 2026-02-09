@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SecondaryHeading from "../headings/SecondaryHeading";
 import TertiaryHeading from "../headings/TertiaryHeading";
+import { stripMarkdown } from "../../utils/textUtils";
 
 const productCategories = ["All", "Dumbbells", "Treadmills", "Benches", "Barbells", "Resistance Bands", "Accessories"];
 
@@ -152,7 +153,7 @@ function ProductsCatalog() {
                   {product.name}
                 </h3>
                 <p className="text-gray-350 text-sm sm:text-base mb-3 sm:mb-4 line-clamp-2">
-                  {product.description}
+                  {stripMarkdown(product.description)}
                 </p>
                 <button className="focus relative inline-flex items-center justify-center gap-1.5 bg-[#000000] px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-bold uppercase text-white before:absolute before:left-2 before:top-[-8px] before:z-[-1] before:h-full before:w-full before:border before:border-solid before:border-red/50 before:transition-all before:duration-500 hover:before:translate-x-[-8px] hover:before:translate-y-[8px] hover:bg-gray-800 w-full sm:w-auto">
                   View Details
