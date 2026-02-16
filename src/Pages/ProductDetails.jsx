@@ -12,7 +12,6 @@ function ProductDetails() {
     const { catalog } = useProducts();
     const [product, setProduct] = useState(null);
     const [category, setCategory] = useState(null);
-    const [selectedImage, setSelectedImage] = useState("");
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const whatsappNumber = "918446915179";
@@ -33,20 +32,24 @@ function ProductDetails() {
 
         setProduct(foundProduct);
         setCategory(foundCategory);
-        setSelectedImage(foundProduct?.image || "");
         setSelectedIndex(0);
     }, [id, catalog]);
 
     const images = product ? [product.image, ...(product.photos || [])].filter(Boolean) : [];
-    const canSlide = images.length > 1;
+    const videos = product ? (product.videos || []).filter(Boolean) : [];
+    const mediaItems = [
+        ...images.map((src) => ({ type: "image", src })),
+        ...videos.map((src) => ({ type: "video", src }))
+    ];
+    const selectedMedia = mediaItems[selectedIndex] || mediaItems[0] || null;
+    const canSlide = mediaItems.length > 1;
 
     const goToIndex = (index) => {
-        if (!images.length) {
+        if (!mediaItems.length) {
             return;
         }
-        const normalized = ((index % images.length) + images.length) % images.length;
+        const normalized = ((index % mediaItems.length) + mediaItems.length) % mediaItems.length;
         setSelectedIndex(normalized);
-        setSelectedImage(images[normalized]);
     };
 
     useEffect(() => {
@@ -96,25 +99,38 @@ function ProductDetails() {
                         {/* Main Image */}
                         <div className="space-y-4">
                             <div className="relative">
-                                <button
-                                    type="button"
-                                    onClick={() => setIsLightboxOpen(true)}
-                                    className="aspect-video rounded-2xl overflow-hidden bg-gray-100 border cursor-zoom-in w-full"
-                                    aria-label={`View ${product.name} image in full screen`}
-                                >
-                                    <img
-                                        src={selectedImage || product.image}
-                                        alt={product.name}
-                                        className="w-full h-full object-cover"
-                                    />
-                                </button>
+                                {selectedMedia?.type === "video" ? (
+                                    <div className="aspect-video rounded-2xl overflow-hidden bg-black border w-full">
+                                        <video
+                                            controls
+                                            className="w-full h-full object-contain bg-black"
+                                            key={selectedMedia.src}
+                                        >
+                                            <source src={selectedMedia.src} />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                ) : (
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsLightboxOpen(true)}
+                                        className="aspect-video rounded-2xl overflow-hidden bg-gray-100 border cursor-zoom-in w-full"
+                                        aria-label={`View ${product.name} image in full screen`}
+                                    >
+                                        <img
+                                            src={selectedMedia?.src || product.image}
+                                            alt={product.name}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </button>
+                                )}
                                 {canSlide && (
                                     <>
                                         <button
                                             type="button"
                                             onClick={() => goToIndex(selectedIndex - 1)}
                                             className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full bg-black/70 text-white w-9 h-9 flex items-center justify-center hover:bg-black transition"
-                                            aria-label="Previous image"
+                                            aria-label="Previous media"
                                         >
                                             ‹
                                         </button>
@@ -122,7 +138,7 @@ function ProductDetails() {
                                             type="button"
                                             onClick={() => goToIndex(selectedIndex + 1)}
                                             className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full bg-black/70 text-white w-9 h-9 flex items-center justify-center hover:bg-black transition"
-                                            aria-label="Next image"
+                                            aria-label="Next media"
                                         >
                                             ›
                                         </button>
@@ -131,12 +147,12 @@ function ProductDetails() {
                             </div>
 
                             {/* Photo Gallery */}
-                            {product.photos && product.photos.length > 0 && (
+                            {images.length > 1 && (
                                 <div>
                                     <h3 className="font-semibold text-gray-800 mb-3">Additional Photos</h3>
                                     <div className="grid grid-cols-4 gap-3">
                                         {product.photos.map((photo, idx) => {
-                                            const isActive = photo === selectedImage;
+                                            const isActive = selectedMedia?.type === "image" && selectedMedia?.src === photo;
                                             return (
                                                 <button
                                                     key={idx}
@@ -145,15 +161,41 @@ function ProductDetails() {
                                                         const index = images.indexOf(photo);
                                                         if (index !== -1) {
                                                             goToIndex(index);
-                                                        } else {
-                                                            setSelectedImage(photo);
                                                         }
-                                                        setIsLightboxOpen(true);
                                                     }}
                                                     className={`aspect-square rounded-lg overflow-hidden border transition ${isActive ? "ring-2 ring-red-500 border-red-200" : "hover:opacity-90"}`}
                                                     aria-label={`View ${product.name} photo ${idx + 1}`}
                                                 >
                                                     <img src={photo} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-cover" />
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Product Videos */}
+                            {videos.length > 0 && (
+                                <div>
+                                    <h3 className="font-semibold text-gray-800 mb-3">Product Videos</h3>
+                                    <div className="grid grid-cols-3 gap-3">
+                                        {videos.map((video, idx) => {
+                                            const mediaIndex = images.length + idx;
+                                            const isActive = selectedMedia?.type === "video" && selectedMedia?.src === video;
+                                            return (
+                                                <button
+                                                    key={idx}
+                                                    type="button"
+                                                    onClick={() => goToIndex(mediaIndex)}
+                                                    className={`relative aspect-video rounded-lg overflow-hidden border transition ${isActive ? "ring-2 ring-red-500 border-red-200" : "hover:opacity-90"}`}
+                                                    aria-label={`View ${product.name} video ${idx + 1}`}
+                                                >
+                                                    <video className="w-full h-full object-cover bg-black" preload="metadata">
+                                                        <source src={video} />
+                                                    </video>
+                                                    <span className="absolute bottom-1 right-1 bg-black/70 text-white text-[10px] px-1.5 py-0.5 rounded">
+                                                        Video
+                                                    </span>
                                                 </button>
                                             );
                                         })}
@@ -223,22 +265,6 @@ function ProductDetails() {
                                 <FaWhatsapp className="h-5 w-5 text-green-400" />
                             </button>
 
-                            {/* Videos Section */}
-                            {product.videos && product.videos.length > 0 && (
-                                <div className="pt-8 border-t">
-                                    <h3 className="font-bold text-xl text-gray-800 mb-4">Product Videos</h3>
-                                    <div className="space-y-4">
-                                        {product.videos.map((video, idx) => (
-                                            <div key={idx} className="aspect-video bg-black rounded-lg overflow-hidden">
-                                                <video controls className="w-full h-full">
-                                                    <source src={video} />
-                                                    Your browser does not support the video tag.
-                                                </video>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
                         </div>
                     </div>
                 </div>
@@ -250,7 +276,7 @@ function ProductDetails() {
                     onClick={() => setIsLightboxOpen(false)}
                     role="dialog"
                     aria-modal="true"
-                    aria-label={`${product.name} full screen image`}
+                    aria-label={`${product.name} full screen media`}
                 >
                     <div
                         className="relative max-h-full max-w-6xl w-full"
@@ -265,7 +291,7 @@ function ProductDetails() {
                             Close
                         </button>
                         <img
-                            src={selectedImage || product.image}
+                            src={selectedMedia?.src || product.image}
                             alt={product.name}
                             className="max-h-[80vh] w-full object-contain rounded-xl bg-black"
                         />
