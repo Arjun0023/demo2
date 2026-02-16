@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useProducts } from "../context/ProductContext";
 import { useState, useEffect } from "react";
 import { FaWhatsapp } from "react-icons/fa6";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaShareAlt } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -14,6 +14,7 @@ function ProductDetails() {
     const [category, setCategory] = useState(null);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+    const [shareCopied, setShareCopied] = useState(false);
     const whatsappNumber = "917410774989";
 
     useEffect(() => {
@@ -50,6 +51,33 @@ function ProductDetails() {
         }
         const normalized = ((index % mediaItems.length) + mediaItems.length) % mediaItems.length;
         setSelectedIndex(normalized);
+    };
+
+    const handleShare = async () => {
+        const shareUrl = window.location.href;
+        const shareTitle = product?.name || "Product";
+
+        try {
+            if (navigator.share) {
+                await navigator.share({
+                    title: shareTitle,
+                    text: `Check out this product: ${shareTitle}`,
+                    url: shareUrl
+                });
+                return;
+            }
+
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(shareUrl);
+                setShareCopied(true);
+                window.setTimeout(() => setShareCopied(false), 2000);
+                return;
+            }
+
+            window.prompt("Copy this product link:", shareUrl);
+        } catch (error) {
+            // Ignore cancellation from the native share sheet.
+        }
     };
 
     useEffect(() => {
@@ -213,19 +241,30 @@ function ProductDetails() {
                                 <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 leading-tight">{product.name}</h1>
                                 <p className="text-xl sm:text-2xl font-semibold text-gray-800 mt-3">{product.price}</p>
                             </div>
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    const message = `Hi, I'm interested in ${product.name}. Please share details.`;
-                                    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-                                    window.open(url, "_blank", "noopener,noreferrer");
-                                }}
-                                className="inline-flex w-full items-center justify-center gap-2 bg-[#000000] text-white py-3.5 rounded-xl font-semibold hover:bg-gray-800 transition transform hover:-translate-y-0.5"
-                                aria-label={`Contact on WhatsApp about ${product.name}`}
-                            >
-                                Contact for Inquiry
-                                <FaWhatsapp className="h-5 w-5 text-green-400" />
-                            </button>
+                            <div className="flex items-stretch gap-3">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        const message = `Hi, I'm interested in ${product.name}. Please share details.`;
+                                        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                                        window.open(url, "_blank", "noopener,noreferrer");
+                                    }}
+                                    className="inline-flex flex-1 items-center justify-center gap-2 bg-[#000000] text-white py-3.5 rounded-xl font-semibold hover:bg-gray-800 transition transform hover:-translate-y-0.5"
+                                    aria-label={`Contact on WhatsApp about ${product.name}`}
+                                >
+                                    Contact for Inquiry
+                                    <FaWhatsapp className="h-5 w-5 text-green-400" />
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={handleShare}
+                                    className="inline-flex min-w-[120px] items-center justify-center gap-2 border border-gray-300 bg-white text-gray-800 py-3.5 px-4 rounded-xl font-semibold hover:bg-gray-100 transition"
+                                    aria-label={`Share ${product.name}`}
+                                >
+                                    <FaShareAlt className="h-4 w-4" />
+                                    {shareCopied ? "Copied" : "Share"}
+                                </button>
+                            </div>
                             {product.specifications && product.specifications.length > 0 && (
                                 <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
                                     <h3 className="text-lg font-semibold text-gray-800 mb-3">Specifications</h3>
