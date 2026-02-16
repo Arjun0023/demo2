@@ -89,7 +89,7 @@ function Sidebar({ isSidebarOpen, handleToggleSidebar }) {
             Pimpri-Chinchwad, Pune, Maharashtra 411017
           </Link>
           <Link
-            to="tel:+918446915179"
+            to="tel:+917410774989"
             className="focus flex items-center gap-2 font-medium text-gray-400 transition-colors duration-300 hover:text-red"
           >
             <FaPhone className="text-red" /> +91 7410 774 989
@@ -115,7 +115,7 @@ function Sidebar({ isSidebarOpen, handleToggleSidebar }) {
           </a>
           <a
             className="rounded-full bg-red p-3 text-white"
-            href="https://wa.me/918446915179"
+            href="https://wa.me/917410774989"
             target="_blank"
             rel="noreferrer"
             aria-label="WhatsApp"

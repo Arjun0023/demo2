@@ -52,7 +52,7 @@ function InfoAyush() {
         <div>
           <h4 className={headingStyles}>Contact Information</h4>
           <a
-            href="tel:+918446915179"
+            href="tel:+917410774989"
             className="flex items-center gap-3 font-medium text-gray-300 hover:text-red transition-colors mb-2"
           >
             <FaPhone className="text-red" />

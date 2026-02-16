@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useProducts } from "../context/ProductContext";
 import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import { stripMarkdown } from "../utils/textUtils";
 
 function CategoryPage() {
     const { id } = useParams();
@@ -10,7 +11,7 @@ function CategoryPage() {
     const navigate = useNavigate();
 
     const category = catalog.find((cat) => cat.id === id);
-    const whatsappNumber = "918446915179";
+    const whatsappNumber = "917410774989";
 
     const openWhatsApp = (event, productName) => {
         event.stopPropagation();
@@ -83,9 +84,9 @@ function CategoryPage() {
                                 <div className="h-48 overflow-hidden">
                                     <img src={product.image} alt={product.name} className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
                                 </div>
-                                <div className="p-6">
+                                <div className="p-6 " >
                                     <h3 className="text-xl font-bold text-gray-800 mb-2">{product.name}</h3>
-                                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
+                                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{stripMarkdown(product.description)}</p>
                                     <div className="flex items-center gap-3">
                                         <button
                                             type="button"
